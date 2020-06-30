@@ -1,0 +1,13 @@
+.footer {
+  min-height: 25%;
+  background-color: cadetblue;
+  position: relative;
+  text-align: center;
+}
+
+#footer-span {
+  position: relative;
+  display: block;
+  margin-top: 15%;
+  color:darkred; 
+}
