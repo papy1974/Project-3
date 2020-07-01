@@ -1,5 +1,5 @@
 module.exports = function(sequelize, DataTypes) {
-    const login = sequelize.define('buy', {
+    const Login = sequelize.define('login', {
       firstname: {
         type: DataTypes.STRING,
         // AllowNull is a flag that restricts a todo from being
@@ -30,6 +30,6 @@ module.exports = function(sequelize, DataTypes) {
       freezeTableName: true,
     });
   
-    return Buy;
+    return Login;
   };
   
