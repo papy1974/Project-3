@@ -29,7 +29,7 @@ module.exports = {
     },
     // used to save and create  an item  to the db
     save: (req, res) => {
-        db.Book
+        db.Items
             .create(req.body)
             .then(dbModel => res.json(dbModel))
             .catch(err => res.status(422).json(err))
