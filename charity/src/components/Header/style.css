@@ -1,0 +1,23 @@
+.imageIcon {
+  width: 23%;
+  height: 100%;
+  margin-left: 52%;
+}
+.homePlaceHolder {
+  height: 60px;
+}
+.mainBar {
+  height: 60px;
+  border: 1px solid black;
+  font-size: 28px;
+  font-weight: bold;
+}
+.rightBorder {
+  border-right: 1px solid black;
+}
+.textCenter {
+  text-align: center;
+}
+.selected {
+  background-color: skyblue;
+}
