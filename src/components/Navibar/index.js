@@ -12,6 +12,9 @@ function Navibar() {
       <Link className="navbar-brand" to="/home">
         Home
       </Link>
+      <Link className="navbar-brand" to="/signup">
+        Sign up
+      </Link>
       <Link className="navbar-brand" to="/buy">
         Buy
       </Link>
