@@ -1,9 +1,9 @@
 import React from "react";
 import {Container, Row, Form, Button} from "react-bootstrap"
 import { Link } from "react-router-dom";
-import "./login.css";
+import "./signup.css";
 
-function Login() {
+function Signup() {
   
   return (
     <Container>
@@ -11,7 +11,7 @@ function Login() {
         <Form>
           <Form.Group controlId="formBasicEmail">
             <Form.Label>Email address</Form.Label>
-            <Form.Control type="email" placeholder="Enter email" />
+            <Form.Control type="email" placeholder="Pleae enter email to sign up here" />
           </Form.Group>
 
           <Form.Group controlId="formBasicPassword">
@@ -20,11 +20,11 @@ function Login() {
           </Form.Group>
       
           <Button variant="primary" type="submit">
-            LOGIN
+            SIGN UP
           </Button>
-          <Link to="/signup">
+          <Link to="/login"> 
             <Button variant="primary" type="submit">
-              SIGN UP
+              LOGIN
             </Button>
           </Link>
         </Form>
@@ -33,4 +33,4 @@ function Login() {
   );
 }
 
-export default Login;
+export default Signup;
