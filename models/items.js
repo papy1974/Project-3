@@ -1,5 +1,5 @@
 module.exports = function(sequelize, DataTypes) {
-    const Items = sequelize.define('items', {
+    return sequelize.define('items', {
       user_id: {
         type: DataTypes.INTEGER,
         // AllowNull is a flag that restricts a todo from being
@@ -51,7 +51,5 @@ module.exports = function(sequelize, DataTypes) {
     {
       freezeTableName: true,
     });
-  
-    return Buy;
   };
   

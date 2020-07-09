@@ -1,8 +1,8 @@
 import React from "react";
 import { Container, Row } from 'react-bootstrap';
 import "./donate.css";
-import { searchApi } from "../../../controllers/donation";
-
+import { searchApi } from "../../utils/API";
+import API from "../../utils/API";
 
 function Donate() {
   
@@ -13,7 +13,7 @@ function Donate() {
         <input type="search" placeholder="Charity Search" id="search"/>
         <button onClick={(e => {
           const search = document.getElementById("search").val();
-          searchApi(search);
+          API.searchApi(search);
         })}>Search</button>
       </Row>
     </Container>
