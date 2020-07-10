@@ -20,8 +20,9 @@ function Login() {
           </Form.Group>
       
           <Button variant="primary" type="submit">
-            LOGIN
+            LOG IN
           </Button>
+          <span>OR</span>
           <Link to="/signup">
             <Button variant="primary" type="submit">
               SIGN UP
