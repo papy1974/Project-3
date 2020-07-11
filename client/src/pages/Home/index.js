@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState} from "react";
 import { Container, Row, Button, Carousel} from 'react-bootstrap';
 import { Link } from "react-router-dom";
 
@@ -6,20 +6,23 @@ import "./home.css";
 
 
 function Home() {
+  const [index, setIndex] = useState(0);
+
+  const handleSelect = (selectedIndex, e) => {
+    setIndex(selectedIndex);
+  };
 
   return (
     <Container>
       <Row>
-        <p>What would you like to do?</p>
+        <h2><p>What would you like to do?</p></h2>
       </Row>
 
       <Row>
-        <Row>
-          <Carousel>
+        <Carousel activeIndex={index} onSelect={handleSelect}>
             <Carousel.Item>
               <img
-              className="d-block w-100"
-              src="https://placehold.it/900x300"
+              src="https://placehold.it/800x400"
               alt="First slide"
               />
               <Carousel.Caption>
@@ -30,8 +33,7 @@ function Home() {
 
             <Carousel.Item>
               <img
-              className="d-block w-100"
-              src="https://placehold.it/900x300"
+              src="https://placehold.it/800x400"
               alt="Third slide"
               />
               <Carousel.Caption>
@@ -42,8 +44,7 @@ function Home() {
 
             <Carousel.Item>
               <img
-              className="d-block w-100"
-              src="https://placehold.it/900x300"
+              src="https://placehold.it/800x400"
               alt="Third slide"
               />
               <Carousel.Caption>
@@ -52,8 +53,9 @@ function Home() {
               </Carousel.Caption>
             </Carousel.Item>
           </Carousel>
+          
         </Row>
-        
+       
         <Row>
           <Link to="/buy">
             <Button className="submit-btn" type="submit">
@@ -71,7 +73,7 @@ function Home() {
             </Button>
           </Link>
         </Row>
-      </Row>
+      
     </Container>
   );
 }

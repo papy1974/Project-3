@@ -22,9 +22,10 @@ function Signup() {
           <Button variant="primary" type="submit">
             SIGN UP
           </Button>
+          <span>OR</span>
           <Link to="/login"> 
             <Button variant="primary" type="submit">
-              LOGIN
+              LOG IN
             </Button>
           </Link>
         </Form>
