@@ -1,18 +1,7 @@
 const db = require("../models");
-const axios = require("axios");
-
-
+//const axios = require("axios");
 
 module.exports = {
-
-    // function to use API from backend
-    searchApi: (req, res) => {
-
-        axios.get("")
-            .then((response) => res.json(response.data))
-            .catch(err => res.status(422).json(err))
-
-    },
 
     // find all products saved in db
     findAll: (req, res) => {
@@ -50,4 +39,3 @@ module.exports = {
     },
 
 };
-
