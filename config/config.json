@@ -1,15 +1,15 @@
 {
   "development": {
     "username": "root",
-    "password": null,
-    "database": "charity",
-    "host": "localhost",
-    "port": 3000,
+    "password": "12261974",
+    "database": "charity_db",
+    "host": "127.0.0.1",
+    "port": 3306,
     "dialect": "mysql"
   },
   "test": {
     "username": "root",
-    "password": null,
+    "password": "12261974",
     "database": "database_test",
     "host": "127.0.0.1",
     "dialect": "mysql"
@@ -18,7 +18,7 @@
     "username": "root",
     "password": null,
     "database": "database_production",
-    "host": "127.0.0.1",
+    "host": "localhost",
     "dialect": "mysql"
   }
 }
