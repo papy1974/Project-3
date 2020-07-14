@@ -44,9 +44,11 @@ function Login() {
                           placeholder="Password" />
           </Form.Group>
       
+
           <Button variant="primary" type="submit" onSubmit={LogUserIn}>
-            LOGIN
+            LOGIN          
           </Button>
+          <span>OR</span>
           <Link to="/signup">
             <Button variant="primary" type="submit">
               SIGN UP
