@@ -1,7 +1,7 @@
 import React from "react";
 import { Container, Row } from 'react-bootstrap';
 import "./sell.css";
-
+import Form from '../../components/Form';
 
 
 function Sell() {
@@ -10,6 +10,10 @@ function Sell() {
     <Container>
       <Row>
         <p>Sell Page!</p>
+      </Row>
+      <Row>
+        <Form
+        />
       </Row>
     </Container>
   );

@@ -8,6 +8,8 @@ function Donate() {
   const [charities, setCharities] = useState([]);
   const [search, setSearch] = useState("");
   const inputEl = React.useRef();
+  const [donate, setDonate] = useState("");
+  const [charitySelector, setCharitySelector] = useState("");
 
   function handleClick () {
     {
@@ -19,6 +21,10 @@ function Donate() {
         .catch(err => console.log(err))
 
     }
+  }
+
+  function donationToCart () {
+    console.log("Charity Selected " + charitySelector + " Ammount Donated " + donate);
   }
 
   return (
@@ -40,14 +46,31 @@ function Donate() {
         <button onClick={() => handleClick()}>Search</button>
        </Row>
        <Row>
-        <ul>
+         <input 
+         type=""
+         placeholder="Donation Amount"
+          ref={inputEl}
+          onChange={() => {
+            setDonate(inputEl.current.value.trim());
+            console.log(donate);
+          }}
+         />
+         <button onClick={() => donationToCart()}>Donate</button>
+       </Row>
+       <Row>
+        <select 
+            ref={inputEl}
+            onChange={() => {
+            setCharitySelector(inputEl.current.value.trim());
+            console.log(charitySelector);
+          }}>
           {charities.map((charity) => (
             <LI
             key={charity.ein}
             charityName={charity.charityName}
             />
           ))}
-        </ul>
+        </select>
         </Row>
     </Container>
   );
