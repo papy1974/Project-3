@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Container, Row } from "react-bootstrap";
+import { Container, Row, Col, Button, Jumbotron } from "react-bootstrap";
 import "./donate.css";
 import API from "../../utils/API";
 import DropdownItem from "../../components/Dropdown Item/index";
@@ -14,15 +14,14 @@ function Donate() {
   const charitySelectorRef = React.useRef();
 
   function handleClick () {
-    {
-      API.searchApi({ body: search }).then((res) => {
+    API.searchApi({ body: search }).then((res) => {
         const result = res.data;
         console.log(result);
         setCharities(result);
         })
         .catch(err => console.log(err))
 
-    }
+
   }
 
   function donationToCart () {
@@ -32,11 +31,17 @@ function Donate() {
   return (
     <Container>
       <Row>
-        <p>Donate Page!</p>
-        </Row>
+      <Jumbotron className="m-2" style={{backgroundColor: ""}}>
+  <h1>Donate!</h1>
+  <p>
+  Search for the charity of your choosing, select them, and add a donation amount to add funds raised to your chart.
+  </p>
+</Jumbotron>
+      </Row>
         <Row>
+          <Col sm={6}>
           <input
-          type="search"
+          type=""
           placeholder="Charity Search"
           ref={inputEl}
           onChange={() => {
@@ -45,9 +50,9 @@ function Donate() {
           }}
         />
         
-        <button onClick={() => handleClick()}>Search</button>
-       </Row>
-       <Row>
+        <Button type="submit" onClick={() => handleClick()}>Search</Button>
+       </Col>
+       <Col sm={6} className="float-right">
          <input 
          type=""
          placeholder="Donation Amount"
@@ -57,7 +62,8 @@ function Donate() {
             console.log(donate);
           }}
          />
-         <button onClick={() => donationToCart()}>Donate</button>
+         <Button type="submit" onClick={() => donationToCart()}>Donate</Button>
+        </Col>
        </Row>
        <Row>
         <select 
