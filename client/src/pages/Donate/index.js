@@ -11,6 +11,10 @@ function Donate() {
   const [donate, setDonate] = useState("");
   const [charitySelector, setCharitySelector] = useState("");
 
+  const searchRef = React.createRef();
+  const donationRef = React.useRef();
+  const charitySelectorRef = React.useRef();
+
   function handleClick () {
     {
       API.searchApi({ body: search }).then((res) => {
@@ -49,9 +53,9 @@ function Donate() {
          <input 
          type=""
          placeholder="Donation Amount"
-          ref={inputEl}
+          ref={donationRef}
           onChange={() => {
-            setDonate(inputEl.current.value.trim());
+            setDonate(donationRef.current.value.trim());
             console.log(donate);
           }}
          />
@@ -59,9 +63,9 @@ function Donate() {
        </Row>
        <Row>
         <select 
-            ref={inputEl}
+            ref={charitySelectorRef}
             onChange={() => {
-            setCharitySelector(inputEl.current.value.trim());
+            setCharitySelector(charitySelectorRef.current.value.trim());
             console.log(charitySelector);
           }}>
           {charities.map((charity) => (
