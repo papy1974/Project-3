@@ -2,16 +2,14 @@ import React, { useState } from "react";
 import { Container, Row } from "react-bootstrap";
 import "./donate.css";
 import API from "../../utils/API";
-import LI from "../../components/LI/index";
+import DropdownItem from "../../components/Dropdown Item/index";
 
 function Donate() {
   const [charities, setCharities] = useState([]);
   const [search, setSearch] = useState("");
-  const inputEl = React.useRef();
   const [donate, setDonate] = useState("");
   const [charitySelector, setCharitySelector] = useState("");
-
-  const searchRef = React.createRef();
+  const inputEl = React.useRef();
   const donationRef = React.useRef();
   const charitySelectorRef = React.useRef();
 
@@ -28,7 +26,7 @@ function Donate() {
   }
 
   function donationToCart () {
-    console.log("Charity Selected " + charitySelector + " Ammount Donated " + donate);
+    alert("Added to cart: $" + donate + "donation to " + charitySelector);
   }
 
   return (
@@ -69,12 +67,17 @@ function Donate() {
             console.log(charitySelector);
           }}>
           {charities.map((charity) => (
-            <LI
+            <DropdownItem
             key={charity.ein}
             charityName={charity.charityName}
             />
           ))}
         </select>
+        </Row>
+        <Row>
+          <div>
+
+          </div>
         </Row>
     </Container>
   );

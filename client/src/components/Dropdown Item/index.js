@@ -1,7 +1,7 @@
 import React from "react";
 
 
-function LI(props) {
+function DropdownItem(props) {
 
   return ( 
   <option>
@@ -10,4 +10,4 @@ function LI(props) {
   )
 }
 
-export default LI;
+export default DropdownItem;
