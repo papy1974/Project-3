@@ -1,7 +1,6 @@
 import React, {useState} from "react";
 import { Form, Button, Container, Row, Col } from 'react-bootstrap';
 import "./sell.css";
-import Form from '../../components/Form';
 
 
 function Sell() {
@@ -67,10 +66,6 @@ function Sell() {
             Submit
           </Button>
         </Form>
-      </Row>
-      <Row>
-        <Form
-        />
       </Row>
     </Container>
   );
