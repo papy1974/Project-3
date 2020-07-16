@@ -66,7 +66,8 @@ function Donate() {
         </Col>
        </Row>
        <Row>
-        <select 
+        <select
+            className="m-2" 
             ref={charitySelectorRef}
             onChange={() => {
             setCharitySelector(charitySelectorRef.current.value.trim());
@@ -81,9 +82,11 @@ function Donate() {
         </select>
         </Row>
         <Row>
-          <div>
-
-          </div>
+          <Col 
+          sm={12}
+          className="text-center">
+        <Button>Charity Contribution Tracker</Button>
+        </Col>
         </Row>
     </Container>
   );
