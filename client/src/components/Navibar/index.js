@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { Navbar } from 'react-bootstrap';
+import { Navbar, Nav } from 'react-bootstrap';
 //import "./navibar.css";
 
 
@@ -30,7 +30,7 @@ function Navibar() {
       <Link className="navbar-brand" to="/donate">
         Donate
       </Link>
-  <strong className="float-right">{user}</strong>
+  <Nav className="ml-auto"><strong >{user}</strong></Nav>
     </Navbar>
         
   );
