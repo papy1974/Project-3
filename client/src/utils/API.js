@@ -20,6 +20,10 @@ export default {
     return axios.post("/api/signup", userData);
   },
 
+  addSellItem: function (itemData) {
+    return axios.post("/api/items", itemData);
+  },
+
   // function to use API from backend
   searchApi: (req, res) => {
 

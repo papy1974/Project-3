@@ -25,10 +25,10 @@ function Welcome() {
       <Card>
     <Card.Body>
       <Card.Text>
-       Welcome to Exchanging Hands. This is an online 
+       Welcome to Exchanging Hands. This is an online retail space with all proceeds going to a charity of your choice. Purchase products you enjoy, sell items for a good cause, or donate directly to your favorite cause.
       </Card.Text>
     </Card.Body>
-    <Card.Img variant="bottom" src="holder.js/100px180" />
+    <Card.Img variant="bottom" src="/maria-oswalt-uKHyDoZLx5E-unsplash.jpg" />
   </Card>
       </Row>
     </Container>

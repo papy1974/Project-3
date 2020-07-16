@@ -47,7 +47,7 @@ class Buy extends Component {
       itemsToDisplay: itemsToDisplayLocal,
     });
   }
-
+  
   componentWillMount() {
     this.setState({
       itemsToDisplay: this.state.sessionNotes,
@@ -108,6 +108,7 @@ class Buy extends Component {
       </div>
     );
   }
+  );
 }
 
 export default Buy;
