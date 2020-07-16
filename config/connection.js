@@ -15,8 +15,8 @@ let sequelize;
 if (process.env.JAWSDB_URL) {
   connection = mysql.createConnection(process.env.JAWSDB_URL);
 } else {
-  sequelize = new Sequelize('charity_db', 'root', '12261974', {
-    host: '127.0.0.1',
+  sequelize = new Sequelize('charity_db', 'root', null, {
+    host: 'localhost',
     port: 3306,
     dialect: 'mysql',
     pool: {

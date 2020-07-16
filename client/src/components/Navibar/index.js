@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { Navbar } from 'react-bootstrap';
 //import "./navibar.css";
@@ -6,6 +6,9 @@ import { Navbar } from 'react-bootstrap';
 
 // Depending on the current path, this component sets the "active" class on the appropriate navigation link item
 function Navibar() {
+
+  const [user, setUser] = useState("User");
+
   return (
     <Navbar className="navbar navbar-expand-lg navbar-light bg-light">
       <Link className="navbar-brand" to="/"></Link>
@@ -27,6 +30,7 @@ function Navibar() {
       <Link className="navbar-brand" to="/donate">
         Donate
       </Link>
+  <strong className="float-right">{user}</strong>
     </Navbar>
         
   );
