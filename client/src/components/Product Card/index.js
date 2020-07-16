@@ -6,14 +6,14 @@ function ProductCard (props) {
 
     return (
         <Card style={{ width: '18rem' }}>
-  <Card.Img variant="top" src="holder.js/100px180" />
+  <Card.Img className="d-block" variant="top" src={props.img} />
   <Card.Body>
-    <Card.Title>props.ITEMNAME</Card.Title>
+    <Card.Title>{props.name}</Card.Title>
     <Card.Text>
-      props.PRICE
+      <p>${props.price}</p>
     </Card.Text>
     <Card.Text>
-      props.DESCRIPTION
+      {props.desc}
     </Card.Text>
     <Button variant="primary">Add to Cart</Button>
   </Card.Body>
