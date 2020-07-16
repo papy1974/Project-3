@@ -1,7 +1,7 @@
 const bcrypt = require('bcryptjs');
 
 module.exports = function(sequelize, DataTypes) {
-    const Login = sequelize.define('Login', {
+    const Login = sequelize.define('login', {
       email: {
         type: DataTypes.STRING,
         // AllowNull is a flag that restricts a todo from being

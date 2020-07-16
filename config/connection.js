@@ -24,6 +24,9 @@ if (process.env.JAWSDB_URL) {
       min: 0,
       idle: 10000,
     },
+    dialectOptions: {
+      socketPath: "/var/run/mysqld/mysqld.sock"
+  },
   });
 }
 
