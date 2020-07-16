@@ -1,6 +1,6 @@
 module.exports = function(sequelize, DataTypes) {
     const Login = sequelize.define('login', {
-      firstname: {
+      email: {
         type: DataTypes.STRING,
         // AllowNull is a flag that restricts a todo from being
         // entered if it doesn't have a text value
