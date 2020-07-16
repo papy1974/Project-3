@@ -2,17 +2,14 @@ const db = require("../models");
 //const axios = require("axios");
 
 module.exports = {
-
-    
-    // used to save and create  an item  to the db
-    save: (req, res) => {
-        db.Login
-            .create(req.body)
-            .then(function() {
-                res.redirect(307, '/api/login');
-              })
-              .catch(function(err) {
-                res.status(401).json(err);
-              });
-    }
+  save: (req, res) => {
+    db.Login
+      .create(req.body)
+      .then(function () {
+        res.status(201).end();
+      })
+      .catch(function (err) {
+        res.status(500).json(err);
+      });
+  }
 }
