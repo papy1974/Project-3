@@ -3,7 +3,6 @@ import { Form, Button, Container, Row, Col } from 'react-bootstrap';
 import "./sell.css";
 
 
-
 function Sell() {
 
   const [image, setImage] = useState("");

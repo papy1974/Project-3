@@ -1,6 +1,6 @@
 import React, { useState} from "react";
-import { Container, Row, Button, Carousel} from 'react-bootstrap';
-import { Link } from "react-router-dom";
+import { Container, Row, Col, Carousel} from 'react-bootstrap';
+// import { Link } from "react-router-dom";
 
 import "./home.css";
 
@@ -15,65 +15,51 @@ function Home() {
   return (
     <Container>
       <Row>
-        <h2><p>What would you like to do?</p></h2>
+        <Col sm={12}>
+        <h2 className="text-center">Welcome to Exchanging Hands!</h2>
+        </Col>
       </Row>
-
       <Row>
-        <Carousel activeIndex={index} onSelect={handleSelect}>
+        <Carousel className="h-50" activeIndex={index} onSelect={handleSelect}>
             <Carousel.Item>
               <img
-              src="https://placehold.it/800x400"
-              alt="First slide"
+              className="d-block w-100"
+              src="/joel-muniz-A4Ax1ApccfA-unsplash.jpg"
+              alt="Volunteers unloading a truck of supplies"
               />
               <Carousel.Caption>
-                <h3>First slide label</h3>
-                <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+                <h3>Get Involved</h3>
+                <p>Find local charities to volunteer your time!</p>
               </Carousel.Caption>
             </Carousel.Item>
 
             <Carousel.Item>
               <img
-              src="https://placehold.it/800x400"
-              alt="Third slide"
+              className="d-block w-100"
+              src="/larm-rmah-AEaTUnvneik-unsplash.jpg"
+              alt="A group of children smiling for the camera"
               />
               <Carousel.Caption>
-                <h3>Second slide label</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                <h3>Send Donations</h3>
+                <p>Select charities to help fund raise programs!</p>
               </Carousel.Caption>
             </Carousel.Item>
 
             <Carousel.Item>
               <img
-              src="https://placehold.it/800x400"
+              className="d-block w-100"
+              src="/perry-grone-lbLgFFlADrY-unsplash.jpg"
               alt="Third slide"
               />
               <Carousel.Caption>
-                <h3>Third slide label</h3>
-                <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+                <h3>Thank You</h3>
+                <p>Without you, we could not help those in need!</p>
               </Carousel.Caption>
             </Carousel.Item>
           </Carousel>
           
         </Row>
-       
-        <Row>
-          <Link to="/buy">
-            <Button className="submit-btn" type="submit">
-              Buy
-            </Button>
-          </Link>
-          <Link to="/sell">
-            <Button className="submit-btn" type="submit">
-              Sell
-            </Button>
-          </Link>
-          <Link to="/donate">
-            <Button className="submit-btn" type="submit">
-              Donate
-            </Button>
-          </Link>
-        </Row>
-      
+             
     </Container>
   );
 }

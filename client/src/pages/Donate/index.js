@@ -1,34 +1,47 @@
 import React, { useState } from "react";
-import { Container, Row } from "react-bootstrap";
+import { Container, Row, Col, Button, Jumbotron } from "react-bootstrap";
 import "./donate.css";
 import API from "../../utils/API";
-import LI from "../../components/LI/index";
+import DropdownItem from "../../components/Dropdown Item/index";
 
 function Donate() {
   const [charities, setCharities] = useState([]);
   const [search, setSearch] = useState("");
+  const [donate, setDonate] = useState("");
+  const [charitySelector, setCharitySelector] = useState("");
   const inputEl = React.useRef();
+  const donationRef = React.useRef();
+  const charitySelectorRef = React.useRef();
 
   function handleClick () {
-    {
-      API.searchApi({ body: search }).then((res) => {
+    API.searchApi({ body: search }).then((res) => {
         const result = res.data;
         console.log(result);
         setCharities(result);
         })
         .catch(err => console.log(err))
 
-    }
+
+  }
+
+  function donationToCart () {
+    alert("Added to cart: $" + donate + "donation to " + charitySelector);
   }
 
   return (
     <Container>
       <Row>
-        <p>Donate Page!</p>
-        </Row>
+      <Jumbotron className="m-2" style={{backgroundColor: ""}}>
+  <h1>Donate!</h1>
+  <p>
+  Search for the charity of your choosing, select them, and add a donation amount to add funds raised to your chart.
+  </p>
+</Jumbotron>
+      </Row>
         <Row>
+          <Col sm={6}>
           <input
-          type="search"
+          type=""
           placeholder="Charity Search"
           ref={inputEl}
           onChange={() => {
@@ -37,17 +50,43 @@ function Donate() {
           }}
         />
         
-        <button onClick={() => handleClick()}>Search</button>
+        <Button type="submit" onClick={() => handleClick()}>Search</Button>
+       </Col>
+       <Col sm={6} className="float-right">
+         <input 
+         type=""
+         placeholder="Donation Amount"
+          ref={donationRef}
+          onChange={() => {
+            setDonate(donationRef.current.value.trim());
+            console.log(donate);
+          }}
+         />
+         <Button type="submit" onClick={() => donationToCart()}>Donate</Button>
+        </Col>
        </Row>
        <Row>
-        <ul>
+        <select
+            className="m-2" 
+            ref={charitySelectorRef}
+            onChange={() => {
+            setCharitySelector(charitySelectorRef.current.value.trim());
+            console.log(charitySelector);
+          }}>
           {charities.map((charity) => (
-            <LI
+            <DropdownItem
             key={charity.ein}
             charityName={charity.charityName}
             />
           ))}
-        </ul>
+        </select>
+        </Row>
+        <Row>
+          <Col 
+          sm={12}
+          className="text-center">
+        <Button>Charity Contribution Tracker</Button>
+        </Col>
         </Row>
     </Container>
   );

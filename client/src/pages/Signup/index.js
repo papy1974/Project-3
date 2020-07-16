@@ -34,7 +34,7 @@ function Signup() {
             <Form.Control type="email"
                           name="email"
                           onChange={handleInputChange}
-                          placeholder="Pleae enter email to sign up here" />
+                          placeholder="Please enter email to sign up here" />
           </Form.Group>
 
           <Form.Group controlId="formBasicPassword">
