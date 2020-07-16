@@ -11,7 +11,7 @@ module.exports = function(sequelize, DataTypes) {
           len: [1],
         },
       },
-      item_type: {
+      item_name: {
         type: DataTypes.STRING,
         // AllowNull is a flag that restricts a todo from being
         // entered if it doesn't have a text value
@@ -22,7 +22,7 @@ module.exports = function(sequelize, DataTypes) {
           len: [1,256],
         },
       },
-      item_model: {
+      item_price: {
         type: DataTypes.STRING,
         // AllowNull is a flag that restricts a todo from being
         // entered if it doesn't have a text value
@@ -44,7 +44,28 @@ module.exports = function(sequelize, DataTypes) {
           len: [1],
         },
       },
-
+      item_desc: {
+        type: DataTypes.STRING,
+        // AllowNull is a flag that restricts a todo from being
+        // entered if it doesn't have a text value
+        allowNull: false,
+        // len is a validation that checks that our todo is
+        // between 1 and 140 characters
+        validate: {
+          len: [1],
+        },
+      },
+      item_img_url: {
+        type: DataTypes.STRING,
+        // AllowNull is a flag that restricts a todo from being
+        // entered if it doesn't have a text value
+        allowNull: false,
+        // len is a validation that checks that our todo is
+        // between 1 and 140 characters
+        validate: {
+          len: [1],
+        },
+      },
       
 
     },

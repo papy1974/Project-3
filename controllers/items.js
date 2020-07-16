@@ -3,7 +3,6 @@ const db = require("../models");
 
 module.exports = {
 
-    
     // used to save and create  an item  to the db
     save: (req, res) => {
         db.items

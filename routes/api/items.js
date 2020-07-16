@@ -1,9 +1,9 @@
 const router = require("express").Router();
-const donationsController = require("../../controllers/donation");
+const itemsController = require("../../controllers/items");
 
 // Matches with "/api/donations"
 router.route("/")
-  .get(donationsController.findAll);
+  .post(itemsController.save);
 
 // Matches with "/api/books/:id"
 /*router
