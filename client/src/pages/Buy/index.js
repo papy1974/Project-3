@@ -108,7 +108,6 @@ class Buy extends Component {
       </div>
     );
   }
-  );
 }
 
 export default Buy;
