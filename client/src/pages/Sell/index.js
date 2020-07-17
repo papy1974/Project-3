@@ -1,10 +1,12 @@
 import React, { useState, useRef } from "react";
+import { Redirect } from "react-router-dom";
 import { Form, Button, Container, Row, Col } from 'react-bootstrap';
 import "./sell.css";
 import API from "../../utils/API";
-
+import { useUserContext } from "../../utils/GlobalState";
 
 function Sell() {
+  const [state, _] = useUserContext();
   const itemNameRef = useRef();
   const itemQuantityRef = useRef();
   const itemPriceRef = useRef();

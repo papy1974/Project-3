@@ -1,7 +1,8 @@
 import React, { Component } from "react";
+import { Redirect } from "react-router-dom";
 import { Container, Row, Col } from "react-bootstrap";
 import MediaCard from "../../components/MediaCard/index";
-import { useUserContext } from "../../utils/GlobalState";
+import { Consumer } from "../../utils/GlobalState";
 import "./buy.css";
 
 class Buy extends Component {
@@ -75,7 +76,6 @@ class Buy extends Component {
   }
 
   render() {
-    const [state, _] = useUserContext();
     const { classes } = this.props;
     const { spacing } = this.state;
     let page = [];
@@ -92,8 +92,9 @@ class Buy extends Component {
     }
 
     return (
-      <div>
-        {state.user ?
+      <Consumer>
+        {state =>
+          state[0].user ?
           <Container style={{ marginTop: "50px" }}>
             <Row>
               <input
@@ -107,9 +108,9 @@ class Buy extends Component {
             </Row>
             <Row>{page}</Row>
           </Container>
-          : <Redirect to={"/login"} />
+          : <Redirect to="/login" />
         }
-      </div>
+      </Consumer>
     );
   }
 }

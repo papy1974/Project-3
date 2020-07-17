@@ -1,7 +1,7 @@
 import React, { createContext, useReducer, useContext } from "react";
 
 const UserContext = createContext();
-const { Provider } = UserContext;
+const { Consumer, Provider } = UserContext;
 
 const reducer = (_, action) => {
   switch (action.type) {
@@ -22,4 +22,4 @@ const useUserContext = () => {
   return useContext(UserContext);
 };
 
-export { UserProvider, useUserContext };
+export { Consumer, UserProvider, useUserContext };
