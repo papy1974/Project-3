@@ -32,4 +32,7 @@ export default {
 
     return axios.get(url + userSearch);
   },
+  buyApi: (req,res) =>{
+    return axios.get("/api/items");
+  }
 };

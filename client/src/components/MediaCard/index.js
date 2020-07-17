@@ -49,16 +49,16 @@ class MediaCard extends Component {
   render() {
     return (
       <MuiThemeProvider>
-        <Card style={{ backgroundColor: "cornflowerblue" }}>
-          {/* <CardMedia>
-          
-          </CardMedia> */}
+        <Card>
+          <CardMedia>
+            <img src={this.props.sessionNote.item_img_url} alt="" />
+          </CardMedia>
           <CardTitle
-            titleStyle={{ fontSize: "50px" }}
-            title={this.props.sessionNote.name}
+            title={this.props.sessionNote.item_name}
+            subtitle={this.props.sessionNote.item_desc}
           />
-          <CardText style={{ fontSize: "35px" }}>
-            $ {this.props.sessionNote.price}
+          <CardText style={{ fontSize: "20px", fontWeight: "600" }}>
+            $ {this.props.sessionNote.item_price}
           </CardText>
           <CardActions>
             <button
@@ -68,13 +68,6 @@ class MediaCard extends Component {
             >
               BUY
             </button>
-
-            {/* {!this.state.notAdded && (
-              <FlatButton
-                label={this.state.count}
-                onClick={() => this.addTocart(this.props.sessionNote)}
-              />
-            )} */}
           </CardActions>
         </Card>
       </MuiThemeProvider>

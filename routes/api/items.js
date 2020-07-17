@@ -2,8 +2,7 @@ const router = require("express").Router();
 const itemsController = require("../../controllers/items");
 
 // Matches with "/api/donations"
-router.route("/")
-  .post(itemsController.save);
+router.route("/").post(itemsController.save);
 
 // Matches with "/api/books/:id"
 /*router
@@ -11,5 +10,5 @@ router.route("/")
   .get(donationsController.findById)
   .put(donationsController.update)
   .delete(donationsController.remove);*/
-
+router.route("/").get(itemsController.get);
 module.exports = router;
