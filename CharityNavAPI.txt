@@ -1,0 +1,5 @@
+Charity Navigator API
+
+Id: f591e4ff
+
+Key: 0d693d8ab79cff6b8e20b4a8c6896c0a

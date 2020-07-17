@@ -1,0 +1,19 @@
+.form-label{
+  color: blueviolet;
+  margin-top: 3%;
+  margin-left: 1%;
+
+}
+
+#first-input{
+  margin-top: 0;
+}
+
+.entire-form{
+  margin-top: -3%;
+  
+}
+
+.submit-btn{
+  margin-top: 1.5%;
+}
