@@ -6,17 +6,16 @@ import "./login.css";
 
 function Login() {
   const [formObject, setFormObject] = useState({});
-  
 
-  function LogUserIn() {
-    
+  function LogUserIn(event) {
+    event.preventDefault();
+
     // Setting our component's initial state
     if (!formObject.email || !formObject.password) {
       return;
     }
     // If we have an email and password, run the signUpUser function
-    API.loginUser(formObject.email, formObject.password);
-    
+    API.loginUser(formObject);
   }
 
   function handleInputChange(event) {
@@ -45,15 +44,7 @@ function Login() {
           </Form.Group>
       
 
-          <Button variant="primary" type="submit" onSubmit={LogUserIn}>
-            LOGIN          
-          </Button>
-          <span>OR</span>
-          <Link to="/signup">
-            <Button variant="primary" type="submit">
-              SIGN UP
-            </Button>
-          </Link>
+          <Button variant="primary" type="submit" onClick={LogUserIn}>LOGIN</Button>
         </Form>
       </Row>
     </Container>

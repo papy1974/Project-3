@@ -1,11 +1,10 @@
 import axios from "axios";
 
 export default {
-
-  loginUser: function (email, password) {
+  loginUser: function (loginObject) {
     axios.post('/api/login', {
-      email: email,
-      password: password,
+      email: loginObject.email,
+      password: loginObject.password,
     })
       .then(function () {
         window.location.replace('/category');

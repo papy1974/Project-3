@@ -3,7 +3,7 @@ const db = require("../models");
 
 module.exports = {
   save: (req, res) => {
-    db.Login
+    db.login
       .create(req.body)
       .then(function () {
         res.status(201).end();
