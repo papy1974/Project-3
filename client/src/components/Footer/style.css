@@ -1,7 +1,10 @@
 .footer {
-  min-height: 25%;
+  min-height: 100px;
   background-color: cadetblue;
   position: relative;
+  left: 0;
+  right: 0;
+  bottom: 0;
   text-align: center;
 }
 
@@ -9,5 +12,5 @@
   position: relative;
   display: block;
   margin-top: 15%;
-  color:darkred; 
+  color:white; 
 }

@@ -9,6 +9,8 @@ import Donate from "./pages/Donate";
 import Cart from "./pages/Cart";
 import Welcome from "./pages/Welcome";
 import Navibar from "./components/Navibar";
+import Footer from "./components/Footer";
+
 import Wrapper from "./components/Wrapper";
 
 import "./App.css";
@@ -32,6 +34,7 @@ function App() {
           <Route exact path="/cart" component={Cart} />
         </UserProvider>
       </Wrapper>
+      <Footer />
     </Router>
   );
 }

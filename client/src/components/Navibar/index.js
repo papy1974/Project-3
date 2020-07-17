@@ -31,7 +31,6 @@ function Navibar() {
       </Link>
       <strong className="float-right">{state.user ? state.user.firstName : ""}</strong>
     </Navbar>
-
   );
 }
 

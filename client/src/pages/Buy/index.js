@@ -1,36 +1,117 @@
-import React, { useState } from "react";
-import { Redirect } from "react-router-dom";
-import { Container, Row } from 'react-bootstrap';
-import ProductCard from "../../components/Product Card";
-import "./buy.css";
+import React, { Component } from "react";
+import { Container, Row, Col } from "react-bootstrap";
+import MediaCard from "../../components/MediaCard/index";
 import { useUserContext } from "../../utils/GlobalState";
+import "./buy.css";
 
-function Buy() {
-  const [state, _] = useUserContext();
-  const [products, setProducts] = useState([{ key: 1, name: 'Vase', price: 200, desc: 'Decorative Vase for Charity' }]);
+class Buy extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      spacing: "16",
+      itemsToDisplay: [],
+      sessionNotes: [
+        {
+          name: "item2",
+          qty: "dexcription",
+          price: 40,
+        },
+        {
+          name: "item1",
+          qty: "dexcription",
+          price: 40,
+        },
+        {
+          name: "item1",
+          qty: "dexcription",
+          price: 40,
+        },
+        {
+          name: "item1",
+          qty: "dexcription",
+          price: 40,
+        },
+      ],
+    };
+  }
 
-  return (
-    <div>
-      {state.user ?
-        <Container>
-          <Row>
-            <p>Buy Page!</p>
-          </Row>
-          <Row>
-            {products.map((product) => (
-              <ProductCard
-                key={product.key}
-                name={product.name}
-                price={product.price}
-                desc={product.desc}
-              />
-            ))}
-          </Row>
-        </Container>
-        : <Redirect to={"/login"} />
+  search(key) {
+    console.log(key.target.value);
+    let itemsToDisplayLocal = [];
+    this.state.sessionNotes.map((r, i) => {
+      if (r.name.indexOf(key.target.value) >= 0) {
+        itemsToDisplayLocal.push(r);
       }
-    </div>
-  );
+    });
+    this.setState({
+      itemsToDisplay: itemsToDisplayLocal,
+    });
+  }
+  
+  componentWillMount() {
+    this.setState({
+      itemsToDisplay: this.state.sessionNotes,
+    });
+    console.log("itd", this.state.itemsToDisplay);
+    // this.setState({
+    //   isLoading: true,
+    // });
+    // axios
+    //   .get(config.host + "/home/buy")
+    //   .then((res) => {
+    //     this.setState({
+    //       sessionNotes: res.data.items,
+    //       isLoading: false,
+    //       itemsToDisplay: res.data.items,
+    //     });
+    //   })
+    //   .catch((err) => {
+    //     console.log(err);
+    //     alert("Something went wrong please try again...");
+    //     this.setState({
+    //       isLoading: false,
+    //     });
+    // });
+  }
+
+  render() {
+    const [state, _] = useUserContext();
+    const { classes } = this.props;
+    const { spacing } = this.state;
+    let page = [];
+    console.log("items", this.state.itemsToDisplay);
+    for (let i = 0; i < this.state.itemsToDisplay.length; i++)
+      page.push(
+        <Col xs={4} style={{ marginTop: "50px" }}>
+          <MediaCard sessionNote={this.state.itemsToDisplay[i]} />
+        </Col>
+      );
+    console.log("page");
+    if (this.state.isLoading) {
+      return <p>Loading Please Wait....</p>;
+    }
+
+    return (
+      <div>
+        {state.user ?
+          <Container style={{ marginTop: "50px" }}>
+            <Row>
+              <input
+                className="form-control"
+                style={{ fontSize: "35px", minHeight: "85px" }}
+                type="text"
+                placeholder="Search"
+                id="filterText"
+                onChange={this.search.bind(this)}
+              ></input>
+            </Row>
+            <Row>{page}</Row>
+          </Container>
+          : <Redirect to={"/login"} />
+        }
+      </div>
+    );
+  }
 }
 
 export default Buy;
