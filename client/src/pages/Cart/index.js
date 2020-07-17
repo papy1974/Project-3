@@ -28,9 +28,6 @@ class Cart extends Component {
     // let data = JSON.parse(localStorage.getItem("cart"));
     // console.log("data", data);
   }
-<<<<<<< Updated upstream
-=======
-
   onSuccess (payment) {
     // Congratulation, it came here means everything's fine!
         console.log("The payment was succeeded!", payment);
@@ -50,7 +47,6 @@ onCancel(data) {
     // => sometimes it may take about 0.5 second for everything to get set, or for the button to appear
 }
 
->>>>>>> Stashed changes
   componentWillMount() {
     // this.setState({
     //   items: JSON.parse(localStorage.getItem("cart")).cart,
@@ -100,11 +96,6 @@ onCancel(data) {
                 </thead>
               </table>
             </Row>
-<<<<<<< Updated upstream
-            <button type="button" className="btn btn-secondary btn-lg">
-              Checkout
-            </button>
-=======
            <Row>
         <Paypal
         onError={this.onError} 
@@ -112,7 +103,6 @@ onCancel(data) {
         onCancel={this.onCancel} />
        
       </Row>
->>>>>>> Stashed changes
           </Container>
         </div>
       </div>
