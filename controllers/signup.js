@@ -1,9 +1,8 @@
 const db = require("../models");
-//const axios = require("axios");
 
 module.exports = {
   save: (req, res) => {
-    db.login
+    db.Login
       .create(req.body)
       .then(function () {
         res.status(201).end();

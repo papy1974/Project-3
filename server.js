@@ -23,7 +23,6 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
-//require("./routes/api/login")(app);
 app.use(routes);
 
 db.sequelize.sync().then(function() {

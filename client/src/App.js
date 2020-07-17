@@ -9,24 +9,28 @@ import Donate from "./pages/Donate";
 import Cart from "./pages/Cart";
 import Welcome from "./pages/Welcome";
 import Navibar from "./components/Navibar";
-
 import Wrapper from "./components/Wrapper";
+
 import "./App.css";
+import { UserProvider } from "./utils/GlobalState";
 
 function App() {
   document.title = "Charities";
+
   return (
     <Router>
       <Wrapper>
-        <Navibar />
+        <UserProvider>
+          <Navibar />
+          <Route exact path="/login" component={Login} />
           <Route exact path="/" component={Welcome} />
           <Route exact path="/home" component={Home} />
           <Route exact path="/buy" component={Buy} />
           <Route exact path="/signup" component={Signup} />
-          <Route exact path="/login" component={Login} />
           <Route exact path="/sell" component={Sell} />
           <Route exact path="/donate" component={Donate} />
           <Route exact path="/cart" component={Cart} />
+        </UserProvider>
       </Wrapper>
     </Router>
   );

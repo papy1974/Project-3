@@ -2,7 +2,7 @@ const passport = require("../../config/passport");
 const router = require("express").Router();
 
 router.post('/', passport.authenticate('local'), function(req, res) {
-  res.redirect('/');
+  res.json(req.user);
 });
 
 /*module.exports = function (app) {
