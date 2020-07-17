@@ -37,7 +37,7 @@ function Signup() {
   return (
     <div>
       {willRedirect ?
-        <Redirect to="/Login" />
+        <Redirect to="/login" />
         :
         <Container>
           <Row>

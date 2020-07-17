@@ -48,12 +48,6 @@ function Login() {
           <Button variant="primary" type="submit" onSubmit={LogUserIn}>
             LOGIN          
           </Button>
-          <span>OR</span>
-          <Link to="/signup">
-            <Button variant="primary" type="submit">
-              SIGN UP
-            </Button>
-          </Link>
         </Form>
       </Row>
     </Container>

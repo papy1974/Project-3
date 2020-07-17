@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-
+import "./cart.css";
+import Paypal from "../../components/Paypal";
 import { Container, Card, Row, Col, ListGroup } from "react-bootstrap";
 import { isInteger, toInteger } from "lodash";
 
