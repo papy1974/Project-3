@@ -29,7 +29,7 @@ function Navibar() {
       <Link className="navbar-brand" to="/donate">
         Donate
       </Link>
-      <strong className="float-right">{state.user.firstName}</strong>
+      <strong className="float-right">{state.user ? state.user.firstName : ""}</strong>
     </Navbar>
 
   );

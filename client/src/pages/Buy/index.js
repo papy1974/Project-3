@@ -4,7 +4,6 @@ import { Container, Row } from 'react-bootstrap';
 import ProductCard from "../../components/Product Card";
 import "./buy.css";
 import { useUserContext } from "../../utils/GlobalState";
-import Login from "../Login";
 
 function Buy() {
   const [state, _] = useUserContext();

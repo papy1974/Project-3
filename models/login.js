@@ -1,7 +1,7 @@
 const bcrypt = require('bcryptjs');
 
 module.exports = function (sequelize, DataTypes) {
-  const Login = sequelize.define('Login', {
+  const Login = sequelize.define('login', {
     email: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -24,7 +24,9 @@ module.exports = function (sequelize, DataTypes) {
     lastName: {
       type: DataTypes.STRING,
       allowNull: false,
-    }
+    },
+  }, {
+    freezeTableName: true,
   });
 
   Login.prototype.validPassword = function (password) {
