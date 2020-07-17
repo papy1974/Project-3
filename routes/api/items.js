@@ -5,6 +5,9 @@ const itemsController = require("../../controllers/items");
 router.route("/")
   .post(itemsController.save);
 
+router.route("/")
+  .get(itemsController.findAll);
+
 // Matches with "/api/books/:id"
 /*router
   .route("/:id")

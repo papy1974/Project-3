@@ -32,4 +32,7 @@ export default {
 
     return axios.get(url + userSearch);
   },
+  addToCart: (cartData) => {
+    return axios.post("/api/cart", cartData);
+  }
 };

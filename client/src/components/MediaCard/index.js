@@ -7,7 +7,7 @@ import {
   CardTitle,
   CardText,
 } from "material-ui/Card";
-
+import API from "../../utils/API";
 import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
 
 class MediaCard extends Component {
@@ -19,7 +19,7 @@ class MediaCard extends Component {
     };
   }
 
-  addTocart(itemTocart) {
+  handleAddToCart(itemTocart) {
     itemTocart.count = this.state.count;
     let item = JSON.parse(localStorage.getItem("cart"));
     if (!item) {
@@ -38,7 +38,15 @@ class MediaCard extends Component {
       item.cart.push(itemTocart);
     }
     item.count = item.count + 1;
-    console.log("itemss", item);
+    API.addToCart({
+      user_id: 1,
+          item_name: item.name,
+          item_price: item.price,
+          item_quantity: 1,
+          item_desc: item.qty,
+          item_img_url: 'aaa'
+    })
+    console.log("items", item);
     localStorage.setItem("cart", JSON.stringify(item));
     this.setState({
       notAdded: false,
@@ -63,8 +71,10 @@ class MediaCard extends Component {
           <CardActions>
             <button
               type="button"
-              class="btn btn-secondary btn-lg btn-block"
-              onClick={() => this.addTocart(this.props.sessionNote)}
+              className="btn btn-secondary btn-lg btn-block"
+              onClick={() => 
+                this.handleAddToCart(this.props.sessionNote)
+              }
             >
               BUY
             </button>
