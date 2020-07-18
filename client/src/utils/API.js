@@ -40,4 +40,5 @@ export default {
   getCart(user_id) {
     return axios.get("/api/buy?user_id=" + user_id);
   },
+
 };
