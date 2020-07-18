@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import API from "../../utils/API";
+
 import {
   Card,
   CardActions,
@@ -20,45 +22,29 @@ class MediaCard extends Component {
   }
 
   addTocart(itemTocart) {
-    itemTocart.count = this.state.count;
-    let item = JSON.parse(localStorage.getItem("cart"));
-    if (!item) {
-      item = {
-        cart: [itemTocart],
-        count: 0,
-      };
-    } else {
-      let i;
-      for (i = 0; i < item.cart.length; i++) {
-        if (itemTocart.id === item.cart[i].id) {
-          break;
-        }
-      }
-      item.cart.splice(i, 1);
-      item.cart.push(itemTocart);
-    }
-    item.count = item.count + 1;
-    console.log("itemss", item);
-    localStorage.setItem("cart", JSON.stringify(item));
-    this.setState({
-      notAdded: false,
-      count: this.state.count + 1,
+    let data = {
+      item_model: itemTocart.id,
+      item_quantity: 1,
+      item_type: "buy",
+      user_id: 1,
+    };
+    API.addToCart(data).catch((err) => {
+      console.log(err);
     });
-    window.location.reload();
   }
   render() {
     return (
       <MuiThemeProvider>
-        <Card style={{ backgroundColor: "cornflowerblue" }}>
-          {/* <CardMedia>
-          
-          </CardMedia> */}
+        <Card>
+          <CardMedia>
+            <img src={this.props.sessionNote.item_img_url} alt="" />
+          </CardMedia>
           <CardTitle
-            titleStyle={{ fontSize: "50px" }}
-            title={this.props.sessionNote.name}
+            title={this.props.sessionNote.item_name}
+            subtitle={this.props.sessionNote.item_desc}
           />
-          <CardText style={{ fontSize: "35px" }}>
-            $ {this.props.sessionNote.price}
+          <CardText style={{ fontSize: "20px", fontWeight: "600" }}>
+            $ {this.props.sessionNote.item_price}
           </CardText>
           <CardActions>
             <button
@@ -68,13 +54,6 @@ class MediaCard extends Component {
             >
               BUY
             </button>
-
-            {/* {!this.state.notAdded && (
-              <FlatButton
-                label={this.state.count}
-                onClick={() => this.addTocart(this.props.sessionNote)}
-              />
-            )} */}
           </CardActions>
         </Card>
       </MuiThemeProvider>

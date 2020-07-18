@@ -4,6 +4,8 @@ import { Container, Row, Col } from "react-bootstrap";
 import MediaCard from "../../components/MediaCard/index";
 import { Consumer } from "../../utils/GlobalState";
 import "./buy.css";
+import API from "../../utils/API";
+
 
 class Buy extends Component {
   constructor(props) {
@@ -11,36 +13,19 @@ class Buy extends Component {
     this.state = {
       spacing: "16",
       itemsToDisplay: [],
-      sessionNotes: [
-        {
-          name: "item2",
-          qty: "dexcription",
-          price: 40,
-        },
-        {
-          name: "item1",
-          qty: "dexcription",
-          price: 40,
-        },
-        {
-          name: "item1",
-          qty: "dexcription",
-          price: 40,
-        },
-        {
-          name: "item1",
-          qty: "dexcription",
-          price: 40,
-        },
-      ],
+      sessionNotes: [],
     };
   }
 
   search(key) {
     console.log(key.target.value);
     let itemsToDisplayLocal = [];
+    console.log(this.state.sessionNotes);
     this.state.sessionNotes.map((r, i) => {
-      if (r.name.indexOf(key.target.value) >= 0) {
+      console.log(r);
+      if (
+        r.item_name.toLowerCase().indexOf(key.target.value.toLowerCase()) >= 0
+      ) {
         itemsToDisplayLocal.push(r);
       }
     });
@@ -48,31 +33,17 @@ class Buy extends Component {
       itemsToDisplay: itemsToDisplayLocal,
     });
   }
-  
+
   componentWillMount() {
-    this.setState({
-      itemsToDisplay: this.state.sessionNotes,
+    API.buyApi().then((res) => {
+      console.log(res.data);
+
+      this.setState({
+        sessionNotes: res.data,
+        itemsToDisplay: res.data,
+      });
     });
     console.log("itd", this.state.itemsToDisplay);
-    // this.setState({
-    //   isLoading: true,
-    // });
-    // axios
-    //   .get(config.host + "/home/buy")
-    //   .then((res) => {
-    //     this.setState({
-    //       sessionNotes: res.data.items,
-    //       isLoading: false,
-    //       itemsToDisplay: res.data.items,
-    //     });
-    //   })
-    //   .catch((err) => {
-    //     console.log(err);
-    //     alert("Something went wrong please try again...");
-    //     this.setState({
-    //       isLoading: false,
-    //     });
-    // });
   }
 
   render() {

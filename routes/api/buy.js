@@ -1,8 +1,8 @@
 const router = require("express").Router();
-const itemsController = require("../../controllers/items");
+const buyController = require("../../controllers/buy");
 
 // Matches with "/api/donations"
-router.route("/").post(itemsController.save);
+router.route("/").post(buyController.save);
 
 // Matches with "/api/books/:id"
 /*router
@@ -10,5 +10,5 @@ router.route("/").post(itemsController.save);
   .get(donationsController.findById)
   .put(donationsController.update)
   .delete(donationsController.remove);*/
-router.route("/").get(itemsController.get);
+router.route("/").get(buyController.get);
 module.exports = router;
