@@ -5,3 +5,15 @@
 .card-header{
   color: maroon
 }
+
+p {
+  display: block;
+  font-size: 2em;
+  margin-top: 1.33em;
+  margin-bottom: 1.33em;
+  margin-left: 0;
+  margin-right: 0;
+  font-weight: bold;
+  font-family:Georgia;
+  color: rgb(15, 128, 0);
+}

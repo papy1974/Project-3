@@ -7,13 +7,14 @@ const db = require('../models');
 // In other words, we want login with a username/email and password
 passport.use(new LocalStrategy(
     // Our user will sign in using an email, rather than a "username"
-    {
+/*    {
       email: 'email',
-    },
+    },*/
+    {usernameField:"email", passwordField:"password"},
     
     function(email, password, done) {
     // When a user tries to sign in this code runs
-      db.Login.findOne({
+      db.login.findOne({
         where: {
           email: email,
         },

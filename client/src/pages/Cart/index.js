@@ -3,69 +3,61 @@ import "./cart.css";
 import Paypal from "../../components/Paypal";
 import { Container, Card, Row, Col, ListGroup } from "react-bootstrap";
 import { isInteger, toInteger } from "lodash";
+import API from "../../utils/API";
 
 class Cart extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      items: [
-        {
-          name: "name1",
-          price: "40",
-          count: 1,
-        },
-        {
-          name: "name2",
-          price: "40",
-          count: 1,
-        },
-        {
-          name: "name3",
-          price: "50",
-          count: 1,
-        },
-      ],
+      items: [],
     };
     // let data = JSON.parse(localStorage.getItem("cart"));
     // console.log("data", data);
   }
-  onSuccess (payment) {
+  onSuccess(payment) {
     // Congratulation, it came here means everything's fine!
-        console.log("The payment was succeeded!", payment);
-        // You can bind the "payment" object's value to your state or props or whatever here, please see below for sample returned data
-}
+    console.log("The payment was succeeded!", payment);
+    // You can bind the "payment" object's value to your state or props or whatever here, please see below for sample returned data
+  }
 
-onCancel(data) {
+  onCancel(data) {
     // User pressed "cancel" or close Paypal's popup!
-    console.log('The payment was cancelled!', data);
+    console.log("The payment was cancelled!", data);
     // You can bind the "data" object's value to your state or props or whatever here, please see below for sample returned data
-}
+  }
 
- onError (err) {
+  onError(err) {
     // The main Paypal's script cannot be loaded or somethings block the loading of that script!
     console.log("Error!", err);
     // Because the Paypal's main script is loaded asynchronously from "https://www.paypalobjects.com/api/checkout.js"
     // => sometimes it may take about 0.5 second for everything to get set, or for the button to appear
-}
+  }
 
   componentWillMount() {
     // this.setState({
     //   items: JSON.parse(localStorage.getItem("cart")).cart,
     // });
     // console.log("set", this.state.items);
+    let user_id = 1;
+    API.getCart(user_id).then((resp) => {
+      this.setState({ items: resp.data });
+      console.log(resp);
+    });
   }
   render() {
     let page = [];
     let totalPrice = 0;
     for (let i = 0; i < this.state.items.length; i++) {
-      totalPrice += toInteger(this.state.items[i].price);
+      totalPrice +=
+        toInteger(this.state.items[i]["item.item_price"]) *
+        this.state.items[i]["item_quantity"];
       page.push(
         <tbody>
           <tr>
             <th scope="row">{i + 1}</th>
-            <td>{this.state.items[i].name}</td>
-            <td> {this.state.items[i].count + 1}</td>
-            <td> $ {this.state.items[i].price}</td>
+            <td>{this.state.items[i]["item.item_name"]}</td>
+            <td> {this.state.items[i]["item_quantity"]}</td>
+            <td> $ {this.state.items[i]["item.item_price"]}</td>
           </tr>
         </tbody>
       );
@@ -97,13 +89,13 @@ onCancel(data) {
                 </thead>
               </table>
             </Row>
-           <Row>
-        <Paypal
-        onError={this.onError} 
-        onSuccess={this.onSuccess}
-        onCancel={this.onCancel} />
-       
-      </Row>
+            <Row>
+              <Paypal
+                onError={this.onError}
+                onSuccess={this.onSuccess}
+                onCancel={this.onCancel}
+              />
+            </Row>
           </Container>
         </div>
       </div>

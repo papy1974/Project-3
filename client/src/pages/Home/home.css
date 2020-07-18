@@ -5,3 +5,40 @@
 .card-header{
   color: maroon
 }
+
+h2 { 
+  display: block;
+  font-size: 2em;
+  margin-top: 0.67em;
+  margin-bottom: 0.67em;
+  margin-left: 0;
+  margin-right: 0;
+  font-weight: bold;
+  font-family:Georgia;
+  color: rgb(128, 0, 0);
+}
+
+h3 {
+  display: block;
+  font-size: 1.5em;
+  margin-top: 0.83em;
+  margin-bottom: 0.83em;
+  margin-left: 0;
+  margin-right: 0;
+  font-weight: bold;
+  font-family:Georgia;
+  
+  color: rgb(0, 128, 21);
+}
+
+p {
+  display: block;
+  font-size: 1em;
+  margin-top: 1.33em;
+  margin-bottom: 1.33em;
+  margin-left: 0;
+  margin-right: 0;
+  font-weight: bold;
+  font-family:Georgia;
+  color: rgb(128, 83, 0);
+}
