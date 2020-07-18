@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { Navbar, Nav } from 'react-bootstrap';
-//import "./navibar.css";
+import "./navibar.css";
+
 
 
 // Depending on the current path, this component sets the "active" class on the appropriate navigation link item
@@ -10,7 +11,9 @@ function Navibar() {
   const [user, setUser] = useState("User");
 
   return (
-    <Navbar className="navbar navbar-expand-lg navbar-light bg-light">
+    
+    <Navbar className="color-nav"  variant="light">
+
       <Link className="navbar-brand" to="/"></Link>
       <Link className="navbar-brand" to="/home">
         Home
