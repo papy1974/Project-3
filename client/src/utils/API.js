@@ -1,19 +1,9 @@
 import axios from "axios";
 
 export default {
-  loginUser: function (email, password) {
-    axios
-      .post("/api/login", {
-        email: email,
-        password: password,
-      })
-      .then(function () {
-        window.location.replace("/category");
-        // If there's an error, log the error
-      })
-      .catch(function (err) {
-        console.log(err);
-      });
+  loginUser: function (loginCredentials) {
+    return axios
+      .post("/api/login", loginCredentials);
   },
 
   userSignup: function (userData) {
