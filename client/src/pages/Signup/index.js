@@ -2,7 +2,7 @@ import React, { useRef, useState } from "react";
 import { Redirect } from "react-router-dom";
 import { Container, Row, Form, Button } from "react-bootstrap";
 import API from "../../utils/API";
-import Login from "../../pages/Login";
+// import Login from "../../pages/Login";
 import "./signup.css";
 
 function Signup() {

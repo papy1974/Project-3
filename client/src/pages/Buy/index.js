@@ -4,8 +4,8 @@ import { Container, Row, Col } from "react-bootstrap";
 import MediaCard from "../../components/MediaCard/index";
 import { Consumer } from "../../utils/GlobalState";
 import "./buy.css";
+import axios from "axios";
 import API from "../../utils/API";
-
 
 class Buy extends Component {
   constructor(props) {
@@ -16,6 +16,20 @@ class Buy extends Component {
       sessionNotes: [],
     };
   }
+
+  // handleAddToCart() {
+  //   console.log()
+  //   API.addToCart({ 
+  //     user_id: 1,
+  //     item_name: "a",
+  //     item_price: 12,
+  //     item_quantity: 1,
+  //     item_desc: 'asdv',
+  //     item_img_url: 'aaa'
+  //   })
+  //   .then(res => console.log(res))
+  //   .catch(err => console.log(err));
+  // }
 
   search(key) {
     console.log(key.target.value);
