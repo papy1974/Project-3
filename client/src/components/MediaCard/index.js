@@ -9,7 +9,6 @@ import {
   CardTitle,
   CardText,
 } from "material-ui/Card";
-import API from "../../utils/API";
 import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
 
 class MediaCard extends Component {
@@ -21,38 +20,38 @@ class MediaCard extends Component {
     };
   }
 
-  handleAddToCart(itemTocart) {
-    itemTocart.count = this.state.count;
-    let item = JSON.parse(localStorage.getItem("cart"));
-    if (!item) {
-      item = {
-        cart: [itemTocart],
-        count: 0,
-      };
-    } else {
-      let i;
-      for (i = 0; i < item.cart.length; i++) {
-        if (itemTocart.id === item.cart[i].id) {
-          break;
-        }
-      }
-      item.cart.splice(i, 1);
-      item.cart.push(itemTocart);
-    }
-    item.count = item.count + 1;
-    API.addToCart({
-      user_id: 1,
-          item_name: item.name,
-          item_price: item.price,
-          item_quantity: 1,
-          item_desc: item.qty,
-          item_img_url: 'aaa'
-    })
-    console.log("items", item);
-    localStorage.setItem("cart", JSON.stringify(item));
-    this.setState({
-      notAdded: false,
-      count: this.state.count + 1,
+  // handleAddToCart(itemTocart) {
+  //   itemTocart.count = this.state.count;
+  //   let item = JSON.parse(localStorage.getItem("cart"));
+  //   if (!item) {
+  //     item = {
+  //       cart: [itemTocart],
+  //       count: 0,
+  //     };
+  //   } else {
+  //     let i;
+  //     for (i = 0; i < item.cart.length; i++) {
+  //       if (itemTocart.id === item.cart[i].id) {
+  //         break;
+  //       }
+  //     }
+  //     item.cart.splice(i, 1);
+  //     item.cart.push(itemTocart);
+  //   }
+  //   item.count = item.count + 1;
+  //   API.addToCart({
+  //     user_id: 1,
+  //         item_name: item.name,
+  //         item_price: item.price,
+  //         item_quantity: 1,
+  //         item_desc: item.qty,
+  //         item_img_url: 'aaa'
+  //   })
+  //   console.log("items", item);
+  //   localStorage.setItem("cart", JSON.stringify(item));
+  //   this.setState({
+  //     notAdded: false,
+  //     count: this.state.count + 1,
   addTocart(itemTocart) {
     let data = {
       item_model: itemTocart.id,
