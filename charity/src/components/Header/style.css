@@ -11,6 +11,8 @@
   border: 1px solid black;
   font-size: 28px;
   font-weight: bold;
+  color: rgb(128, 0, 0);
+  
 }
 .rightBorder {
   border-right: 1px solid black;
@@ -21,3 +23,4 @@
 .selected {
   background-color: skyblue;
 }
+
