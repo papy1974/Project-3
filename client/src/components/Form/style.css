@@ -5,3 +5,15 @@ input {
     width: 400px;
     height: 200px;
 }
+
+p { 
+    display: block;
+    font-size: 2em;
+    margin-top: 0.67em;
+    margin-bottom: 0.67em;
+    margin-left: 0;
+    margin-right: 0;
+    font-weight: bold;
+    font-family:Georgia;
+    color: rgb(34, 0, 128);
+  }

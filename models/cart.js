@@ -1,5 +1,5 @@
-module.exports = function (sequelize, DataTypes) {
-  return sequelize.define('items', {
+module.exports = function(sequelize, DataTypes) {
+  return sequelize.define('cart', {
     user_id: {
       type: DataTypes.INTEGER,
       // AllowNull is a flag that restricts a todo from being
@@ -19,7 +19,7 @@ module.exports = function (sequelize, DataTypes) {
       // len is a validation that checks that our todo is
       // between 1 and 140 characters
       validate: {
-        len: [1, 256],
+        len: [1,256],
       },
     },
     item_price: {
@@ -30,7 +30,7 @@ module.exports = function (sequelize, DataTypes) {
       // len is a validation that checks that our todo is
       // between 1 and 140 characters
       validate: {
-        len: [1, 256],
+        len: [1,256],
       },
     },
     item_quantity: {
@@ -66,8 +66,10 @@ module.exports = function (sequelize, DataTypes) {
         len: [1],
       },
     },
+    
+
   },
-    {
-      freezeTableName: true,
-    });
+  {
+    freezeTableName: true,
+  });
 };

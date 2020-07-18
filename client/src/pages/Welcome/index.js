@@ -1,12 +1,10 @@
 import React from "react";
-import { Container, Row, Col, Button, Card} from 'react-bootstrap';
+import { Container, Row, Col, Button, Card } from 'react-bootstrap';
 import { Link } from "react-router-dom";
 
 import "./welcome.css";
 
-
 function Welcome() {
-
   return (
     <Container>
       <Row>
@@ -32,11 +30,10 @@ function Welcome() {
             </Button>
           </Link>
         </Col>
+
       </Row>
     </Container>
   );
-  
- 
 }
 
 export default Welcome;
