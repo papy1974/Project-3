@@ -36,8 +36,10 @@ Object.keys(db).forEach(function (modelName) {
   }
 });
 
-db.sequelize = sequelize;
-db.Sequelize = Sequelize;
-db.buy.belongsTo(db.items, { foreignKey: "item_model" });
-db.items.hasMany(db.buy, { foreignKey: "item_model" });
-module.exports = db;
+//Why is this code here? What does it do?
+
+// db.sequelize = sequelize;
+// db.Sequelize = Sequelize;
+// db.buy.belongsTo(db.items, { foreignKey: "item_name" });
+// db.items.hasMany(db.buy, { foreignKey: "item_name" });
+// module.exports = db;

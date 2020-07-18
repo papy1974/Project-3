@@ -35,10 +35,14 @@ export default {
     return axios.get("/api/items");
   },
   addToCart(data) {
-    return axios.post("/api/buy", data);
+    return axios.post("/api/cart", data);
   },
   getCart(user_id) {
     return axios.get("/api/buy?user_id=" + user_id);
+  },
+
+  postOrder(orderData) {
+    return axios.post("/api/order", orderData);
   },
 
 };
