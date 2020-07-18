@@ -12,8 +12,22 @@ class Buy extends Component {
     super(props);
     this.state = {
       spacing: "16",
-      itemsToDisplay: [],
-      sessionNotes: [],
+      itemsToDisplay: [{ 
+            user_id: 1,
+            item_name: "a",
+            item_price: 12,
+            item_quantity: 1,
+            item_desc: 'asdv',
+            item_img_url: 'aaa'
+          }],
+      sessionNotes: [{ 
+        user_id: 1,
+        item_name: "a",
+        item_price: 12,
+        item_quantity: 1,
+        item_desc: 'asdv',
+        item_img_url: 'aaa'
+      }],
     };
   }
 
@@ -48,15 +62,15 @@ class Buy extends Component {
     });
   }
 
-  componentWillMount() {
-    API.buyApi().then((res) => {
+  componentDidMount() {
+    API.itemData().then((res) => {
       console.log(res.data);
 
       this.setState({
         sessionNotes: res.data,
         itemsToDisplay: res.data,
       });
-    });
+    }).catch(err => console.log(err));
     console.log("itd", this.state.itemsToDisplay);
   }
 
@@ -80,7 +94,9 @@ class Buy extends Component {
       <Consumer>
         {state =>
           state[0].user ?
-          <Container style={{ marginTop: "50px" }}>
+          <Container 
+          style={{ marginTop: "50px" }}
+          >
             <Row>
               <input
                 className="form-control"
@@ -89,7 +105,7 @@ class Buy extends Component {
                 placeholder="Search"
                 id="filterText"
                 onChange={this.search.bind(this)}
-              ></input>
+              />
             </Row>
             <Row>{page}</Row>
           </Container>

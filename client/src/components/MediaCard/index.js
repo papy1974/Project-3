@@ -52,7 +52,7 @@ class MediaCard extends Component {
   //   this.setState({
   //     notAdded: false,
   //     count: this.state.count + 1,
-  addTocart(itemTocart) {
+  addToCart(itemTocart) {
     let data = {
       item_model: itemTocart.id,
       item_quantity: 1,
@@ -82,7 +82,7 @@ class MediaCard extends Component {
               type="button"
               className="btn btn-secondary btn-lg btn-block"
               onClick={() => 
-                this.handleAddToCart(this.props.sessionNote)
+                this.addToCart(this.props.sessionNote)
               }
             >
               BUY

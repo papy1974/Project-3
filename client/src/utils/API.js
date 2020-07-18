@@ -13,7 +13,9 @@ export default {
   addSellItem: function (itemData) {
     return axios.post("/api/items", itemData);
   },
-
+  itemData: (itemData) => {
+    return axios.get("/api/items", itemData);
+  },
   // function to use API from backend
   searchApi: (req, res) => {
     let userSearch = req.body;
@@ -21,9 +23,7 @@ export default {
 
     return axios.get(url + userSearch);
   },
-  buyApi: (req, res) => {
-    return axios.get("/api/items");
-  },
+
   addToCart(data) {
     return axios.post("/api/cart", data);
   },
