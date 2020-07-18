@@ -2,11 +2,21 @@ import React, { Component } from 'react';
 import PaypalExpressBtn from 'react-paypal-express-checkout';
  
 export default class Paypal extends Component {
+    
+    constructor(props) {
+        super(props);
+        this.state = {
+          total: props.total,
+        };
+        // let data = JSON.parse(localStorage.getItem("cart"));
+        // console.log("data", data);
+      }
+
     render() {
-         
+
         let env = 'sandbox'; // you can set here to 'production' for production
         let currency = 'USD'; // or you can set this value from your props or state
-        let total = 1; // same as above, this is the total amount (based on currency) to be paid by using Paypal express checkout
+        // let total = {}; // same as above, this is the total amount (based on currency) to be paid by using Paypal express checkout
         // Document on Paypal's currency code: https://developer.paypal.com/docs/classic/api/currency_codes/
  
         const client = {
@@ -25,7 +35,7 @@ export default class Paypal extends Component {
                 env={env}
                 client={client} 
                 currency={currency} 
-                total={total} 
+                total={this.state.total} 
                 
                 
             />
