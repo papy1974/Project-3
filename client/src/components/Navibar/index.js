@@ -1,13 +1,12 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { Navbar, Nav } from 'react-bootstrap';
+import { Navbar } from 'react-bootstrap';
+import { useUserContext } from "../../utils/GlobalState";
 //import "./navibar.css";
-
 
 // Depending on the current path, this component sets the "active" class on the appropriate navigation link item
 function Navibar() {
-
-  const [user, setUser] = useState("User");
+  const [state, _] = useUserContext();
 
   return (
     <Navbar className="navbar navbar-expand-lg navbar-light bg-light">
@@ -30,9 +29,8 @@ function Navibar() {
       <Link className="navbar-brand" to="/donate">
         Donate
       </Link>
-  <Nav className="ml-auto"><strong >{user}</strong></Nav>
+      <strong className="float-right">{state.user ? state.user.firstName : ""}</strong>
     </Navbar>
-        
   );
 }
 

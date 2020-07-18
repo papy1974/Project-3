@@ -1,8 +1,9 @@
 import React, { Component } from "react";
+import { Redirect } from "react-router-dom";
 import { Container, Row, Col } from "react-bootstrap";
 import MediaCard from "../../components/MediaCard/index";
+import { Consumer } from "../../utils/GlobalState";
 import "./buy.css";
-import axios from "axios";
 
 class Buy extends Component {
   constructor(props) {
@@ -91,24 +92,27 @@ class Buy extends Component {
     }
 
     return (
-      <div>
-        <Container style={{ marginTop: "50px" }}>
-          <Row>
-            <input
-              className="form-control"
-              style={{ fontSize: "35px", minHeight: "85px" }}
-              type="text"
-              placeholder="Search"
-              id="filterText"
-              onChange={this.search.bind(this)}
-            ></input>
-          </Row>
-          <Row>{page}</Row>
-        </Container>
-      </div>
+      <Consumer>
+        {state =>
+          state[0].user ?
+          <Container style={{ marginTop: "50px" }}>
+            <Row>
+              <input
+                className="form-control"
+                style={{ fontSize: "35px", minHeight: "85px" }}
+                type="text"
+                placeholder="Search"
+                id="filterText"
+                onChange={this.search.bind(this)}
+              ></input>
+            </Row>
+            <Row>{page}</Row>
+          </Container>
+          : <Redirect to="/login" />
+        }
+      </Consumer>
     );
   }
-  
 }
 
 export default Buy;
