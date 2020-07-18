@@ -1,19 +1,9 @@
 import axios from "axios";
 
 export default {
-  loginUser: function (email, password) {
-    axios
-      .post("/api/login", {
-        email: email,
-        password: password,
-      })
-      .then(function () {
-        window.location.replace("/category");
-        // If there's an error, log the error
-      })
-      .catch(function (err) {
-        console.log(err);
-      });
+  loginUser: function (loginCredentials) {
+    return axios
+      .post("/api/login", loginCredentials);
   },
 
   userSignup: function (userData) {
@@ -35,10 +25,14 @@ export default {
     return axios.get("/api/items");
   },
   addToCart(data) {
-    return axios.post("/api/buy", data);
+    return axios.post("/api/cart", data);
   },
   getCart(user_id) {
     return axios.get("/api/buy?user_id=" + user_id);
+  },
+
+  postOrder(orderData) {
+    return axios.post("/api/order", orderData);
   },
 
 };

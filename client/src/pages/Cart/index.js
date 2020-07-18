@@ -18,6 +18,22 @@ class Cart extends Component {
     // Congratulation, it came here means everything's fine!
     console.log("The payment was succeeded!", payment);
     // You can bind the "payment" object's value to your state or props or whatever here, please see below for sample returned data
+    const obj = {
+      paypal_pay_id: payment.paymentID,
+      user_name: payment.address.recipient_name,
+      user_address: 
+      payment.address.line1 + 
+      payment.address.city + 
+      payment.address.state + 
+      payment.address.country_code + 
+      payment.address.postal_code,
+    };
+    console.log("My obj");
+    // API Route to add payment object to Order table
+    API.postOrder(obj)
+    .then(res => console.log(res))
+    .catch(err => console.log(err));
+
   }
 
   onCancel(data) {
@@ -46,7 +62,7 @@ class Cart extends Component {
   }
   render() {
     let page = [];
-    let totalPrice = 0;
+    let totalPrice = 1;
     for (let i = 0; i < this.state.items.length; i++) {
       totalPrice +=
         toInteger(this.state.items[i]["item.item_price"]) *
@@ -91,6 +107,7 @@ class Cart extends Component {
             </Row>
             <Row>
               <Paypal
+                total={totalPrice}
                 onError={this.onError}
                 onSuccess={this.onSuccess}
                 onCancel={this.onCancel}
