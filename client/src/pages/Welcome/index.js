@@ -8,16 +8,6 @@ function Welcome() {
   return (
     <Container>
       <Row>
-        <Col sm={6}>
-          <p>Welcome Page!</p>
-        </Col>
-        <Col sm={6}>
-          <Link to="/signup">
-            <Button className="submit-btn" type="submit">Log In</Button>
-          </Link>
-        </Col>
-      </Row>
-      <Row>
         <Card>
           <Card.Body>
             <Card.Text>
@@ -26,6 +16,21 @@ function Welcome() {
           </Card.Body>
           <Card.Img variant="bottom" src="/maria-oswalt-uKHyDoZLx5E-unsplash.jpg" />
         </Card>
+      </Row>
+      <Row className="text-center" style={{marginTop:"10px"}}>
+        <Col className="text-center">
+          <Link to="/signup">
+            <Button className="submit-btn">
+              SIGN UP
+            </Button>
+          </Link>
+          <Link to="/login">
+            <Button className="submit-btn">
+              LOG IN
+            </Button>
+          </Link>
+        </Col>
+
       </Row>
     </Container>
   );
