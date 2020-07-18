@@ -15,22 +15,22 @@ function Navibar() {
     <Navbar className="color-nav"  variant="light">
 
       <Link className="navbar-brand" to="/"></Link>
-      <Link className="navbar-brand" to="/home">
+      <Link className="navbar-brand" to="/home"  style={{color:"red"}}>
         Home
       </Link>
-      <Link className="navbar-brand" to="/signup">
+      <Link className="navbar-brand" to="/signup" style={{color:"red"}}>
         Sign up
       </Link>
-      <Link className="navbar-brand" to="/buy">
+      <Link className="navbar-brand" to="/buy" style={{color:"red"}}>
         Buy
       </Link>
-      <Link className="navbar-brand" to="/sell">
+      <Link className="navbar-brand" to="/sell" style={{color:"red"}}>
         Sell
       </Link>
-      <Link className="navbar-brand" to="/cart">
+      <Link className="navbar-brand" to="/cart" style={{color:"red"}}>
         Cart
       </Link>
-      <Link className="navbar-brand" to="/donate">
+      <Link className="navbar-brand" to="/donate" style={{color:"red"}}>
         Donate
       </Link>
   <Nav className="ml-auto"><strong >{user}</strong></Nav>
