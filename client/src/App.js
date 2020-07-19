@@ -5,7 +5,7 @@ import Login from "./pages/Login";
 import Home from "./pages/Home";
 import Buy from "./pages/Buy";
 import Sell from "./pages/Sell";
-import Donate from "./pages/Donate";
+//import Donate from "./pages/Donate";
 import Cart from "./pages/Cart";
 import Welcome from "./pages/Welcome";
 import Navibar from "./components/Navibar";
@@ -37,7 +37,6 @@ function App() {
           <Route exact path="/buy" component={Buy} />
           <Route exact path="/signup" component={Signup} />
           <Route exact path="/sell" component={Sell} />
-          <Route exact path="/donate" component={Donate} />
           <Route exact path="/cart" component={Cart} />
         </UserProvider>
       </Wrapper>
