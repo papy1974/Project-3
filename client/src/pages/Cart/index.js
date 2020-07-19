@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import "./cart.css";
 import Paypal from "../../components/Paypal";
-import { Container, Card, Row, Col, ListGroup } from "react-bootstrap";
-import { isInteger, toInteger } from "lodash";
+import { Container, Row } from "react-bootstrap";
+import { toInteger } from "lodash";
 import API from "../../utils/API";
 
 class Cart extends Component {
@@ -10,9 +10,11 @@ class Cart extends Component {
     super(props);
     this.state = {
       items: [],
+      total: 0,
     };
     // let data = JSON.parse(localStorage.getItem("cart"));
     // console.log("data", data);
+    
   }
   onSuccess(payment) {
     // Congratulation, it came here means everything's fine!
@@ -49,22 +51,23 @@ class Cart extends Component {
     // => sometimes it may take about 0.5 second for everything to get set, or for the button to appear
   }
 
-  componentWillMount() {
+  componentDidMount() {
     // this.setState({
     //   items: JSON.parse(localStorage.getItem("cart")).cart,
     // });
     // console.log("set", this.state.items);
-    let user_id = 1;
-    API.getCart(user_id).then((resp) => {
+    // let user_id = 1;
+    API.displayCartItems().then((resp) => {
       this.setState({ items: resp.data });
       console.log(resp);
     });
   }
   render() {
     let page = [];
-    let totalPrice = 1;
+    let totalPrice = 0;
+    this.setState({total: totalPrice});
     for (let i = 0; i < this.state.items.length; i++) {
-      totalPrice +=
+       totalPrice +=
         toInteger(this.state.items[i]["item.item_price"]) *
         this.state.items[i]["item_quantity"];
       page.push(
@@ -78,13 +81,14 @@ class Cart extends Component {
         </tbody>
       );
     }
+    
     return (
       <div>
         <div>
           <Container style={{ marginTop: "90px" }}>
             <Row>
-              <table class="table">
-                <thead class="thead-dark">
+              <table className="table">
+                <thead className="thead-dark">
                   <tr>
                     <th scope="col">#</th>
                     <th scope="col">Item Name</th>
@@ -96,8 +100,8 @@ class Cart extends Component {
               </table>
             </Row>
             <Row>
-              <table class="table">
-                <thead class="thead-dark">
+              <table className="table">
+                <thead className="thead-dark">
                   <tr>
                     <th scope="col">Total Price</th>
                     <th scope="col">$ {totalPrice}</th>

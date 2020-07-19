@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import { Navbar } from 'react-bootstrap';
 import { useUserContext } from "../../utils/GlobalState";
@@ -6,7 +6,7 @@ import { useUserContext } from "../../utils/GlobalState";
 
 // Depending on the current path, this component sets the "active" class on the appropriate navigation link item
 function Navibar() {
-  const [state, _] = useUserContext();
+  const [state] = useUserContext();
 
   return (
     <Navbar className="navbar navbar-expand-lg navbar-light bg-light">

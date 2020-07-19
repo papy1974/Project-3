@@ -26,9 +26,14 @@ export default {
 
   addToCart(data) {
     return axios.post("/api/cart", data);
+  },  
+  
+  displayCartItems(data) {
+    return axios.get("/api/cart", data);
   },
+
   getCart(user_id) {
-    return axios.get("/api/buy?user_id=" + user_id);
+    return axios.get("/api/item?user_id=" + user_id);
   },
 
   postOrder(orderData) {

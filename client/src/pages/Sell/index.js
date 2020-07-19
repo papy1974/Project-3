@@ -6,7 +6,7 @@ import API from "../../utils/API";
 import { useUserContext } from "../../utils/GlobalState";
 
 function Sell() {
-  const [state, _] = useUserContext();
+  const [state] = useUserContext();
   const itemNameRef = useRef();
   const itemQuantityRef = useRef();
   const itemPriceRef = useRef();
@@ -58,7 +58,7 @@ function Sell() {
         <Container>
           <Row>
             {loading ? (<h3>Loading...</h3>)
-              : (<img src={imageUrl} style={{ width: "500px" }} />)}
+              : (<img src={imageUrl} alt="Uploaded URL Displayed" style={{ width: "500px" }} />)}
           </Row>
           <br />
           <Row>

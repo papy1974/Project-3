@@ -14,7 +14,7 @@ module.exports = {
     if (data) {
       req.body.item_quantity = data.item_quantity + 1;
       console.log("body", req.body);
-      db.buy
+      db.items
         .update(req.body, {
           where: {
             user_id: req.body.user_id,
@@ -22,7 +22,6 @@ module.exports = {
           },
         })
         .then(function () {
-          // res.redirect(307, '/api/login');
           console.log(res);
           res.status(201).json({ message: "updated" });
         })
@@ -30,7 +29,7 @@ module.exports = {
           res.status(401).json(err);
         });
     } else {
-      db.buy
+      db.items
         .create(req.body)
         .then(function () {
           // res.redirect(307, '/api/login');

@@ -5,7 +5,7 @@ import API from "../../utils/API"
 import "./login.css";
 
 function Login() {
-  const [state, dispatch] = useUserContext();
+  const [dispatch] = useUserContext();
   const [formObject, setFormObject] = useState({});
 
   function LogUserIn(event) {

@@ -4,7 +4,6 @@ import { Container, Row, Col } from "react-bootstrap";
 import MediaCard from "../../components/MediaCard/index";
 import { Consumer } from "../../utils/GlobalState";
 import "./buy.css";
-import axios from "axios";
 import API from "../../utils/API";
 
 class Buy extends Component {
@@ -12,50 +11,23 @@ class Buy extends Component {
     super(props);
     this.state = {
       spacing: "16",
-      itemsToDisplay: [{ 
-            user_id: 1,
-            item_name: "a",
-            item_price: 12,
-            item_quantity: 1,
-            item_desc: 'asdv',
-            item_img_url: 'aaa'
-          }],
-      sessionNotes: [{ 
-        user_id: 1,
-        item_name: "a",
-        item_price: 12,
-        item_quantity: 1,
-        item_desc: 'asdv',
-        item_img_url: 'aaa'
-      }],
+      itemsToDisplay: [],
+      sessionNotes: [],
     };
   }
-
-  // handleAddToCart() {
-  //   console.log()
-  //   API.addToCart({ 
-  //     user_id: 1,
-  //     item_name: "a",
-  //     item_price: 12,
-  //     item_quantity: 1,
-  //     item_desc: 'asdv',
-  //     item_img_url: 'aaa'
-  //   })
-  //   .then(res => console.log(res))
-  //   .catch(err => console.log(err));
-  // }
 
   search(key) {
     console.log(key.target.value);
     let itemsToDisplayLocal = [];
     console.log(this.state.sessionNotes);
-    this.state.sessionNotes.map((r, i) => {
+    this.state.sessionNotes.map(r => {
       console.log(r);
       if (
         r.item_name.toLowerCase().indexOf(key.target.value.toLowerCase()) >= 0
       ) {
         itemsToDisplayLocal.push(r);
       }
+      return r;
     });
     this.setState({
       itemsToDisplay: itemsToDisplayLocal,
@@ -75,8 +47,6 @@ class Buy extends Component {
   }
 
   render() {
-    const { classes } = this.props;
-    const { spacing } = this.state;
     let page = [];
     console.log("items", this.state.itemsToDisplay);
     for (let i = 0; i < this.state.itemsToDisplay.length; i++)
