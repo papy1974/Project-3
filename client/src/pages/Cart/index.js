@@ -1,19 +1,25 @@
-import React, { Component } from "react";
+import React, { Component, useState } from "react";
 import "./cart.css";
 import Paypal from "../../components/Paypal";
+import Donate from "../../components/Donate";
 import { Container, Card, Row, Col, ListGroup } from "react-bootstrap";
 import { isInteger, toInteger } from "lodash";
 import API from "../../utils/API";
+
 
 class Cart extends Component {
   constructor(props) {
     super(props);
     this.state = {
       items: [],
+      isPaid: false,
+      isCanceled: false,
+      isError: false
     };
     // let data = JSON.parse(localStorage.getItem("cart"));
     // console.log("data", data);
   }
+  
   onSuccess(payment) {
     // Congratulation, it came here means everything's fine!
     console.log("The payment was succeeded!", payment);
@@ -31,7 +37,11 @@ class Cart extends Component {
     console.log("My obj");
     // API Route to add payment object to Order table
     API.postOrder(obj)
-    .then(res => console.log(res))
+    .then(res => {
+      console.log(res);
+      this.setState(...this.state.isPaid = true)
+      console.log("after setState isPaid", this.state.isPaid);
+    })
     .catch(err => console.log(err));
 
   }
@@ -83,8 +93,8 @@ class Cart extends Component {
         <div>
           <Container style={{ marginTop: "90px" }}>
             <Row>
-              <table class="table">
-                <thead class="thead-dark">
+              <table className="table">
+                <thead className="thead-dark">
                   <tr>
                     <th scope="col">#</th>
                     <th scope="col">Item Name</th>
@@ -96,8 +106,8 @@ class Cart extends Component {
               </table>
             </Row>
             <Row>
-              <table class="table">
-                <thead class="thead-dark">
+              <table className="table">
+                <thead className="thead-dark">
                   <tr>
                     <th scope="col">Total Price</th>
                     <th scope="col">$ {totalPrice}</th>
@@ -105,16 +115,23 @@ class Cart extends Component {
                 </thead>
               </table>
             </Row>
-            <Row>
+            <Row className="text-center">
+              <Col>
               <Paypal
                 total={totalPrice}
                 onError={this.onError}
                 onSuccess={this.onSuccess}
                 onCancel={this.onCancel}
               />
+              </Col>
+              <Col>
+              <Donate />
+              </Col>
             </Row>
           </Container>
+         
         </div>
+        
       </div>
     );
   }
