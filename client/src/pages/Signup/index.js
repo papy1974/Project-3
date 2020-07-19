@@ -2,7 +2,6 @@ import React, { useRef, useState } from "react";
 import { Redirect } from "react-router-dom";
 import { Container, Row, Form, Button, Modal } from "react-bootstrap";
 import API from "../../utils/API";
-//import AlertWindow from "../../components/Alertwindow";
 import "./signup.css";
 
 function Signup() {
@@ -37,7 +36,6 @@ function Signup() {
       })
       .catch((err) => {
         console.log(err);
-
         setShow(true);
       });
   }
@@ -50,15 +48,15 @@ function Signup() {
   };
 
   return (
-    <div>
+    <Container>
       <Modal show={show} onHide={() => setShow(false)}>
         <Modal.Header closeButton>
           <Modal.Title>Signup Feedback</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           {signupStatus
-            ? "You successfully signed up!"
-            : "The email you just entered has already been used. Please use a different email to sign up or log in"}
+            ? "Congratulations!! You successfully signed up.  Please close this dialogue box to be redirected to the login page."
+            : "The email you just entered has already been used. Please use a different email to sign up."}
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
@@ -120,7 +118,7 @@ function Signup() {
           </Row>
         </Container>
       )}
-    </div>
+    </Container>
   );
 }
 
