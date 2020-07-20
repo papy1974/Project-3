@@ -19,6 +19,7 @@
     "password": "woyvouzuw0ya3yvx",
     "database": "ivd3z8ydv5bjujkh",
     "host": "dno6xji1n8fm828n.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
-    "dialect": "mysql"
+    "dialect": "mysql",
+    "use_env_variable": "JAWSDB_URL"
   }
 }
