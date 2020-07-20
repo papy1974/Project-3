@@ -1,40 +1,46 @@
-import React, { Component } from "react";
+import React, { Component, useState } from "react";
 import "./cart.css";
 import Paypal from "../../components/Paypal";
-import { Container, Row } from "react-bootstrap";
-// import { toInteger } from "lodash";
+import Donate from "../../components/Donate";
+import { Container, Card, Row, Col, ListGroup } from "react-bootstrap";
+// import { isInteger, toInteger } from "lodash";
 import API from "../../utils/API";
+
 
 class Cart extends Component {
   constructor(props) {
     super(props);
     this.state = {
       items: [],
-      total: 0,
+      isPaid: [],
     };
     // let data = JSON.parse(localStorage.getItem("cart"));
     // console.log("data", data);
-    
   }
+  
   onSuccess(payment) {
     // Congratulation, it came here means everything's fine!
     console.log("The payment was succeeded!", payment);
     // You can bind the "payment" object's value to your state or props or whatever here, please see below for sample returned data
-    // const obj = {
-    //   paypal_pay_id: payment.paymentID,
-    //   user_name: payment.address.recipient_name,
-    //   user_address: 
-    //   payment.address.line1 + 
-    //   payment.address.city + 
-    //   payment.address.state + 
-    //   payment.address.country_code + 
-    //   payment.address.postal_code,
-    // };
-    // console.log("My obj");
-    // // API Route to add payment object to Order table
-    // API.postOrder(obj)
-    // .then(res => console.log(res))
-    // .catch(err => console.log(err));
+    const obj = {
+      paypal_pay_id: payment.paymentID,
+      user_name: payment.address.recipient_name,
+      user_address: 
+      payment.address.line1 + 
+      payment.address.city + 
+      payment.address.state + 
+      payment.address.country_code + 
+      payment.address.postal_code,
+    };
+    console.log("My obj");
+    // API Route to add payment object to Order table
+    API.postOrder(obj)
+    .then(res => {
+      console.log(res);
+      this.setState(...this.state.isPaid = true)
+      console.log("after setState isPaid", this.state.isPaid);
+    })
+    .catch(err => console.log(err));
 
   }
 
@@ -108,16 +114,23 @@ class Cart extends Component {
                 </thead>
               </table>
             </Row>
-            <Row>
+            <Row className="text-center">
+              <Col>
               <Paypal
                 total={this.state.total}
                 onError={this.onError}
                 onSuccess={this.onSuccess}
                 onCancel={this.onCancel}
               />
+              </Col>
+              <Col>
+              <Donate />
+              </Col>
             </Row>
           </Container>
+         
         </div>
+        
       </div>
     );
   }

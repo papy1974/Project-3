@@ -17,3 +17,11 @@ p {
   font-family:Georgia;
   color: rgb(15, 128, 0);
 }
+
+.submit-btn{
+  background-color: rgb(15, 128, 0);;
+  margin-left: 5%;
+  margin-right: 5%;
+  border-color: rgb(15, 128, 0);
+  color:whitesmoke
+}

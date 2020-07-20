@@ -42,7 +42,7 @@ export default class Paypal extends Component {
                 currency={currency} 
                 total={this.props.total} 
                 
-                
+                           
             />
         );
     }
