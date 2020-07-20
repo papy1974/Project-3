@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Redirect } from "react-router-dom";
-import { Container, Row, Form, Button, Modal } from "react-bootstrap";
+import { Container, Row, Form, Button, Modal, Col } from "react-bootstrap";
 import { useUserContext } from "../../utils/GlobalState";
 import API from "../../utils/API";
 import "./login.css";
@@ -44,7 +44,6 @@ function Login() {
 
   function handleInputChange(event) {
     const { name, value } = event.target;
-
     setFormObject({ ...formObject, [name]: value });
   }
 
@@ -52,11 +51,11 @@ function Login() {
     <Container>
       <Modal show={show} onHide={() => setShow(false)}>
         <Modal.Header closeButton>
-          <Modal.Title>Signup Feedback</Modal.Title>
+          <Modal.Title>Login Feedback</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           {loginStatus
-            ? "Congratulations!! You successfully signed in.  You will be redirected to the home page at the close of this dialogue box."
+            ? "Congratulations!! You have successfully logged in.  You will be redirected to the home page at the close of this dialogue box."
             : "Something went wrong. You either entered your email or password or both incorrectly. Please try again."}
         </Modal.Body>
         <Modal.Footer>
@@ -71,31 +70,41 @@ function Login() {
       ) : (
         <Container>
           <Row>
-            <Form>
-              <Form.Group controlId="formBasicEmail">
-                <Form.Label>Email address</Form.Label>
-                <Form.Control
-                  type="email"
-                  name="email"
-                  onChange={handleInputChange}
-                  placeholder="Enter email"
-                />
-              </Form.Group>
+            <Col md={{ span: 3, offset: 4 }}>
+              <h3>Signup Form</h3>
+            </Col>
+          </Row>
+          <Row>
+            <Col md={{ span: 3, offset: 4 }}>
+              <Form>
+                <Form.Group controlId="formBasicEmail">
+                  <Form.Label>Email address</Form.Label>
+                  <Form.Control
+                    type="email"
+                    name="email"
+                    onChange={handleInputChange}
+                    placeholder="Enter email"
+                  />
+                </Form.Group>
 
-              <Form.Group controlId="formBasicPassword">
-                <Form.Label>Password</Form.Label>
-                <Form.Control
-                  type="password"
-                  name="password"
-                  onChange={handleInputChange}
-                  placeholder="Password"
-                />
-              </Form.Group>
-
+                <Form.Group controlId="formBasicPassword">
+                  <Form.Label>Password</Form.Label>
+                  <Form.Control
+                    type="password"
+                    name="password"
+                    onChange={handleInputChange}
+                    placeholder="Password"
+                  />
+                </Form.Group>
+              </Form>
+            </Col>
+          </Row>
+          <Row>
+            <Col md={{ span: 2, offset: 5 }}>
               <Button variant="primary" type="submit" onClick={LogUserIn}>
                 LOGIN
               </Button>
-            </Form>
+            </Col>
           </Row>
         </Container>
       )}

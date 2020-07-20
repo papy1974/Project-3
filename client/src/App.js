@@ -5,7 +5,6 @@ import Login from "./pages/Login";
 import Home from "./pages/Home";
 import Buy from "./pages/Buy";
 import Sell from "./pages/Sell";
-//import Donate from "./pages/Donate";
 import Cart from "./pages/Cart";
 import Welcome from "./pages/Welcome";
 import Navibar from "./components/Navibar";

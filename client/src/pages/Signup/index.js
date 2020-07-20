@@ -1,6 +1,6 @@
 import React, { useRef, useState } from "react";
 import { Redirect } from "react-router-dom";
-import { Container, Row, Form, Button, Modal } from "react-bootstrap";
+import { Container, Row, Form, Button, Modal, Col } from "react-bootstrap";
 import API from "../../utils/API";
 import "./signup.css";
 
@@ -55,7 +55,7 @@ function Signup() {
         </Modal.Header>
         <Modal.Body>
           {signupStatus
-            ? "Congratulations!! You successfully signed up.  Please close this dialogue box to be redirected to the login page."
+            ? "Congratulations!! You have successfully signed up.  Please close this dialogue box to be redirected to the login page."
             : "The email you just entered has already been used. Please use a different email to sign up."}
         </Modal.Body>
         <Modal.Footer>
@@ -68,53 +68,63 @@ function Signup() {
       {willRedirect ? (
         <Redirect to="/login" />
       ) : (
-        <Container>
+        <Container fluid="md">
           <Row>
-            <Form>
-              <Form.Group controlId="formBasicEmail">
-                <Form.Label>Email address</Form.Label>
-                <Form.Control
-                  ref={emailInputRef}
-                  type="email"
-                  name="email"
-                  placeholder="Enter email"
-                />
-              </Form.Group>
+            <Col md={{ span: 3, offset: 4 }}>
+              <h3>Signup Form</h3>
+            </Col>
+          </Row>
+          <Row>
+            <Col md={{ span: 3, offset: 4 }}>
+              <Form>
+                <Form.Group controlId="formBasicEmail">
+                  <Form.Label>Email address</Form.Label>
+                  <Form.Control
+                    ref={emailInputRef}
+                    type="email"
+                    name="email"
+                    placeholder="Enter email"
+                  />
+                </Form.Group>
 
-              <Form.Group controlId="formBasicFirstName">
-                <Form.Label>First name</Form.Label>
-                <Form.Control
-                  ref={firstNameInputRef}
-                  type="firstName"
-                  name="firstName"
-                  placeholder="First name"
-                />
-              </Form.Group>
+                <Form.Group controlId="formBasicFirstName">
+                  <Form.Label>First name</Form.Label>
+                  <Form.Control
+                    ref={firstNameInputRef}
+                    type="firstName"
+                    name="firstName"
+                    placeholder="First name"
+                  />
+                </Form.Group>
 
-              <Form.Group controlId="formBasicLastName">
-                <Form.Label>Last name</Form.Label>
-                <Form.Control
-                  ref={lastNameInputRef}
-                  type="lastName"
-                  name="lastName"
-                  placeholder="Last name"
-                />
-              </Form.Group>
+                <Form.Group controlId="formBasicLastName">
+                  <Form.Label>Last name</Form.Label>
+                  <Form.Control
+                    ref={lastNameInputRef}
+                    type="lastName"
+                    name="lastName"
+                    placeholder="Last name"
+                  />
+                </Form.Group>
 
-              <Form.Group controlId="formBasicPassword">
-                <Form.Label>Password</Form.Label>
-                <Form.Control
-                  ref={passwordInputRef}
-                  type="password"
-                  name="password"
-                  placeholder="Password"
-                />
-              </Form.Group>
-
+                <Form.Group controlId="formBasicPassword">
+                  <Form.Label>Password</Form.Label>
+                  <Form.Control
+                    ref={passwordInputRef}
+                    type="password"
+                    name="password"
+                    placeholder="Password"
+                  />
+                </Form.Group>
+              </Form>
+            </Col>
+          </Row>
+          <Row>
+            <Col md={{ span: 2, offset: 5 }}>
               <Button variant="primary" type="submit" onClick={signUpUser}>
                 Sign Up
               </Button>
-            </Form>
+            </Col>
           </Row>
         </Container>
       )}
