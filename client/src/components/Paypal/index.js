@@ -36,8 +36,6 @@ export default class Paypal extends Component {
                 client={client} 
                 currency={currency} 
                 total={this.state.total} 
-                
-                           
             />
         );
     }

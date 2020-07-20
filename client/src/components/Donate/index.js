@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Container, Row, Col, Button, Jumbotron, Modal } from "react-bootstrap";
+import { Container, Row, Col, Button, Modal } from "react-bootstrap";
 import "./donate.css";
 import API from "../../utils/API";
 import DropdownItem from "../Dropdown Item/index";
@@ -40,17 +40,13 @@ function Donate() {
       <Modal size="lg" backdrop="static" show={show} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title className="m-2" style={{ backgroundColor: "" }}>
-              <h1>Donate!</h1>
-              
-                Search for the charity of your choosing, select them, and add a
-                donation amount to add funds raised to your chart.
-              
+            <h1>Donate!</h1>
+            Search for the charity of your choosing, select them, and add a
+            donation amount to add funds raised to your chart.
           </Modal.Title>
         </Modal.Header>
         <div className="container">
-        <Modal.Body className="show-grid">
-           missin statement here
-        </Modal.Body>
+          <Modal.Body className="show-grid">missin statement here</Modal.Body>
         </div>
         <Modal.Body className="show-grid">
           <Row>

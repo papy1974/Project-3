@@ -1,9 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Navbar, Card } from 'react-bootstrap';
+import { Navbar } from 'react-bootstrap';
 import "./navibar.css";
 import { useUserContext } from "../../utils/GlobalState";
-import Cart from "../../pages/Cart";
 
 
 
