@@ -3,7 +3,7 @@ import { Redirect } from "react-router-dom";
 import { Form, Button, Container, Row, Col } from 'react-bootstrap';
 import "./sell.css";
 import API from "../../utils/API";
-import { useUserContext } from "../../utils/GlobalState";
+import { useUserContext, Consumer } from "../../utils/GlobalState";
 
 function Sell() {
   const [state] = useUserContext();
@@ -53,12 +53,13 @@ function Sell() {
   }
 
   return (
-    <div>
-      {state.user ?
+  //*  <Consumer>
+     //  {state =>
+       //       state[0].user ? */}
         <Container>
           <Row>
             {loading ? (<h3>Loading...</h3>)
-              : (<img src={imageUrl} alt="Uploaded URL Displayed" style={{ width: "500px" }} />)}
+              : (<img src={imageUrl} alt="" style={{ width: "500px" }} />)}
           </Row>
           <br />
           <Row>
@@ -96,9 +97,9 @@ function Sell() {
             </Form>
           </Row>
         </Container>
-        : <Redirect to={"/login"} />
-      }
-    </div>
+        //* : <Redirect to={"/login"} />
+      ///} 
+    //</Consumer>*/}
   );
 }
 

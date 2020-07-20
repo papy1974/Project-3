@@ -94,6 +94,7 @@ class Cart extends Component {
                     <th scope="col">Price</th>
                   </tr>
                 </thead>
+                <tbody>
                 {this.state.items.map(item => {
           return <tr>
           <th scope="row">{item["id"]}</th>
@@ -102,6 +103,7 @@ class Cart extends Component {
           <td> $ {item["item_price"]}</td>
         </tr>;
         })}
+        </tbody>
               </table>
             </Row>
             <Row>
