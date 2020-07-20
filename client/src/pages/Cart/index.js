@@ -6,18 +6,19 @@ import { Container, Card, Row, Col, ListGroup } from "react-bootstrap";
 // import { isInteger, toInteger } from "lodash";
 import API from "../../utils/API";
 
-
 class Cart extends Component {
   constructor(props) {
     super(props);
     this.state = {
       items: [],
-      isPaid: [],
+      isPaid: false,
+      isCanceled: false,
+      isError: false,
     };
     // let data = JSON.parse(localStorage.getItem("cart"));
     // console.log("data", data);
   }
-  
+
   onSuccess(payment) {
     // Congratulation, it came here means everything's fine!
     console.log("The payment was succeeded!", payment);
@@ -25,23 +26,22 @@ class Cart extends Component {
     const obj = {
       paypal_pay_id: payment.paymentID,
       user_name: payment.address.recipient_name,
-      user_address: 
-      payment.address.line1 + 
-      payment.address.city + 
-      payment.address.state + 
-      payment.address.country_code + 
-      payment.address.postal_code,
+      user_address:
+        payment.address.line1 +
+        payment.address.city +
+        payment.address.state +
+        payment.address.country_code +
+        payment.address.postal_code,
     };
     console.log("My obj");
     // API Route to add payment object to Order table
     API.postOrder(obj)
-    .then(res => {
-      console.log(res);
-      this.setState(...this.state.isPaid = true)
-      console.log("after setState isPaid", this.state.isPaid);
-    })
-    .catch(err => console.log(err));
-
+      .then((res) => {
+        console.log(res);
+        this.setState(...(this.state.isPaid = true));
+        console.log("after setState isPaid", this.state.isPaid);
+      })
+      .catch((err) => console.log(err));
   }
 
   onCancel(data) {
@@ -126,13 +126,11 @@ class Cart extends Component {
               />
               </Col>
               <Col>
-              <Donate />
+                <Donate />
               </Col>
             </Row>
           </Container>
-         
         </div>
-        
       </div>
     );
   }
