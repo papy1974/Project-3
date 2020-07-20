@@ -4,8 +4,8 @@ const itemsController = require("../../controllers/items");
 // Matches with "/api/donations"
 router.route("/").post(itemsController.save);
 
-router.route("/")
-  .get(itemsController.findAll);
+// router.route("/")
+//   .get(itemsController.findAll);
 
 // Matches with "/api/books/:id"
 /*router

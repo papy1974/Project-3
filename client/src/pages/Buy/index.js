@@ -4,7 +4,6 @@ import { Container, Row, Col } from "react-bootstrap";
 import MediaCard from "../../components/MediaCard/index";
 import { Consumer } from "../../utils/GlobalState";
 import "./buy.css";
-import axios from "axios";
 import API from "../../utils/API";
 
 class Buy extends Component {
@@ -17,52 +16,37 @@ class Buy extends Component {
     };
   }
 
-  // handleAddToCart() {
-  //   console.log()
-  //   API.addToCart({ 
-  //     user_id: 1,
-  //     item_name: "a",
-  //     item_price: 12,
-  //     item_quantity: 1,
-  //     item_desc: 'asdv',
-  //     item_img_url: 'aaa'
-  //   })
-  //   .then(res => console.log(res))
-  //   .catch(err => console.log(err));
-  // }
-
   search(key) {
     console.log(key.target.value);
     let itemsToDisplayLocal = [];
     console.log(this.state.sessionNotes);
-    this.state.sessionNotes.map((r, i) => {
+    this.state.sessionNotes.map(r => {
       console.log(r);
       if (
         r.item_name.toLowerCase().indexOf(key.target.value.toLowerCase()) >= 0
       ) {
         itemsToDisplayLocal.push(r);
       }
+      return r;
     });
     this.setState({
       itemsToDisplay: itemsToDisplayLocal,
     });
   }
 
-  componentWillMount() {
-    API.buyApi().then((res) => {
+  componentDidMount() {
+    API.itemData().then((res) => {
       console.log(res.data);
 
       this.setState({
         sessionNotes: res.data,
         itemsToDisplay: res.data,
       });
-    });
+    }).catch(err => console.log(err));
     console.log("itd", this.state.itemsToDisplay);
   }
 
   render() {
-    const { classes } = this.props;
-    const { spacing } = this.state;
     let page = [];
     console.log("items", this.state.itemsToDisplay);
     for (let i = 0; i < this.state.itemsToDisplay.length; i++)
@@ -77,10 +61,12 @@ class Buy extends Component {
     }
 
     return (
-      <Consumer>
-        {state =>
-          state[0].user ?
-          <Container style={{ marginTop: "50px" }}>
+    //*   <Consumer>
+      //state =>
+        //state[0].user ?
+          <Container 
+          style={{ marginTop: "50px" }}
+          >
             <Row>
               <input
                 className="form-control"
@@ -89,13 +75,13 @@ class Buy extends Component {
                 placeholder="Search"
                 id="filterText"
                 onChange={this.search.bind(this)}
-              ></input>
+              />
             </Row>
             <Row>{page}</Row>
           </Container>
-          : <Redirect to="/login" />
-        }
-      </Consumer>
+           //* : <Redirect to="/login" />
+         //} 
+      //</Consumer>*/}
     );
   }
 }

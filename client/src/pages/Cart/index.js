@@ -3,7 +3,7 @@ import "./cart.css";
 import Paypal from "../../components/Paypal";
 import Donate from "../../components/Donate";
 import { Container, Card, Row, Col, ListGroup } from "react-bootstrap";
-import { isInteger, toInteger } from "lodash";
+// import { isInteger, toInteger } from "lodash";
 import API from "../../utils/API";
 
 class Cart extends Component {
@@ -57,37 +57,31 @@ class Cart extends Component {
     // => sometimes it may take about 0.5 second for everything to get set, or for the button to appear
   }
 
-  componentWillMount() {
+  componentDidMount() {
+    
     // this.setState({
     //   items: JSON.parse(localStorage.getItem("cart")).cart,
     // });
     // console.log("set", this.state.items);
-    let user_id = 1;
-    API.getCart(user_id).then((resp) => {
+    // let user_id = 1;
+    API.displayCartItems()
+    .then((resp) => {
       this.setState({ items: resp.data });
       console.log(resp);
-    });
+      const totalPrice = this.state.items.reduce((prevState, item) => {
+        return  prevState + item.item_price;
+      }, 0);
+      
+      this.setState({total: totalPrice});
+    })
+    .catch(err => console.log(err));
   }
   render() {
-    let page = [];
-    let totalPrice = 1234;
-    for (let i = 0; i < this.state.items.length; i++) {
-      totalPrice +=
-        toInteger(this.state.items[i]["item.item_price"]) *
-        this.state.items[i]["item_quantity"];
-      page.push(
-        <tbody>
-          <tr>
-            <th scope="row">{i + 1}</th>
-            <td>{this.state.items[i]["item.item_name"]}</td>
-            <td> {this.state.items[i]["item_quantity"]}</td>
-            <td> $ {this.state.items[i]["item.item_price"]}</td>
-          </tr>
-        </tbody>
-      );
-    }
+    
     return (
+      
       <div>
+        
         <div>
           <Container style={{ marginTop: "90px" }}>
             <Row>
@@ -100,7 +94,16 @@ class Cart extends Component {
                     <th scope="col">Price</th>
                   </tr>
                 </thead>
-                {page}
+                <tbody>
+                {this.state.items.map(item => {
+          return <tr>
+          <th scope="row">{item["id"]}</th>
+          <td>{item["item_name"]}</td>
+          <td> {item["item_quantity"]}</td>
+          <td> $ {item["item_price"]}</td>
+        </tr>;
+        })}
+        </tbody>
               </table>
             </Row>
             <Row>
@@ -108,19 +111,19 @@ class Cart extends Component {
                 <thead className="thead-dark">
                   <tr>
                     <th scope="col">Total Price</th>
-                    <th scope="col">$ {totalPrice}</th>
+                    <th scope="col">$ {this.state.total}</th>
                   </tr>
                 </thead>
               </table>
             </Row>
             <Row className="text-center">
               <Col>
-                <Paypal
-                  total={totalPrice}
-                  onError={this.onError}
-                  onSuccess={this.onSuccess}
-                  onCancel={this.onCancel}
-                />
+              <Paypal
+                total={this.state.total}
+                onError={this.onError}
+                onSuccess={this.onSuccess}
+                onCancel={this.onCancel}
+              />
               </Col>
               <Col>
                 <Donate />

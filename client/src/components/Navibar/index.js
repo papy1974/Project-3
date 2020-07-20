@@ -8,8 +8,8 @@ import { useUserContext } from "../../utils/GlobalState";
 
 // Depending on the current path, this component sets the "active" class on the appropriate navigation link item
 function Navibar() {
-  const [state, _] = useUserContext();
-  
+  const [state] = useUserContext();
+
   return (
     
     <Navbar className="color-nav"  variant="light">

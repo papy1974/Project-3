@@ -15,4 +15,18 @@ module.exports = {
                 res.status(401).json(err);
               });
     },
+
+    displayCartItems: (req, res) => {
+      db.cart
+          .findAll({
+            raw: true,
+          })
+          .then(r => {
+            console.log(r);
+            res.json(r);
+          })
+          .catch( err => {
+            res.status(401).json(err);
+          });
+    }
 }

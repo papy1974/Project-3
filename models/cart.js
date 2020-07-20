@@ -23,7 +23,7 @@ module.exports = function(sequelize, DataTypes) {
       },
     },
     item_price: {
-      type: DataTypes.STRING,
+      type: DataTypes.INTEGER,
       // AllowNull is a flag that restricts a todo from being
       // entered if it doesn't have a text value
       allowNull: false,

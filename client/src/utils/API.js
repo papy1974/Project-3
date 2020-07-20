@@ -13,7 +13,9 @@ export default {
   addSellItem: function (itemData) {
     return axios.post("/api/items", itemData);
   },
-
+  itemData: (itemData) => {
+    return axios.get("/api/items", itemData);
+  },
   // function to use API from backend
   searchApi: (req, res) => {
     let userSearch = req.body;
@@ -21,14 +23,17 @@ export default {
 
     return axios.get(url + userSearch);
   },
-  buyApi: (req, res) => {
-    return axios.get("/api/items");
-  },
+
   addToCart(data) {
     return axios.post("/api/cart", data);
+  },  
+  
+  displayCartItems(data) {
+    return axios.get("/api/cart", data);
   },
+
   getCart(user_id) {
-    return axios.get("/api/buy?user_id=" + user_id);
+    return axios.get("/api/item?user_id=" + user_id);
   },
 
   postOrder(orderData) {
