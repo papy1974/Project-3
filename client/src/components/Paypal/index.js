@@ -12,6 +12,8 @@ export default class Paypal extends Component {
         // console.log("data", data);
       }
 
+      
+
     render() {
 
         let env = 'sandbox'; // you can set here to 'production' for production

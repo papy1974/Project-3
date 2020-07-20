@@ -61,9 +61,9 @@ class Buy extends Component {
     }
 
     return (
-      <Consumer>
-        {state =>
-          state[0].user ?
+      // <Consumer>
+      //   {state =>
+      //     state[0].user ?
           <Container 
           style={{ marginTop: "50px" }}
           >
@@ -79,9 +79,9 @@ class Buy extends Component {
             </Row>
             <Row>{page}</Row>
           </Container>
-          : <Redirect to="/login" />
-        }
-      </Consumer>
+          //: <Redirect to="/login" />
+      //   }
+      // </Consumer> */}
     );
   }
 }
