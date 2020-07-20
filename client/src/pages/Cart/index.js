@@ -66,12 +66,9 @@ class Cart extends Component {
         return  prevState + item.item_price;
       }, 0);
       
-      
-  this.setState({total: totalPrice});
+      this.setState({total: totalPrice});
     })
     .catch(err => console.log(err));
-
-   
   }
   render() {
     
