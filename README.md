@@ -2,7 +2,7 @@
 
 # Title.
 
-The project is named the Charity.
+The project is named  Charity.
 
 
 # Languages and Tools used:
