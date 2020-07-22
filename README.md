@@ -27,7 +27,7 @@ Axios
 
 # Objective and description.
 
-This is a charity created using React. The charity app allows the user to be able to buy, sell, and donate to charities. 
+This is a charity app created using React. The charity app allows the user to be able to buy, sell, and donate to charities. 
 
 Here is the project link: https://aqueous-savannah-13442.herokuapp.com/
 
