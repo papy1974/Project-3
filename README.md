@@ -1,5 +1,3 @@
-
-
 # Title.
 
 The project is named  Charity.
@@ -31,7 +29,7 @@ Axios
 
 This is a charity created using React. The charity app allows the user to be able to buy, sell, and donate to charities. 
 
-Here is the project link : https://aqueous-savannah-13442.herokuapp.com/
+Here is the project link: https://aqueous-savannah-13442.herokuapp.com/
 
 
 
@@ -69,3 +67,5 @@ Github link: https://github.com/ddemuyt/Project-3
 2. Jack
 
 Github link: https://github.com/pjack76
+
+
