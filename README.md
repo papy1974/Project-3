@@ -45,7 +45,7 @@ After forking and cloning the project repertory from Github, the following code 
 
 I am expecting my project to be pulled by other developers to make some suggestions on some block of codes and send me feedback. I can also be contacted by emails:papylotomba@yahoo.fr
 
-License and Copyright.
+# License and Copyright.
 MIT License
 
 Copyright (c) [2020] [PAPY LONTOMBA]
